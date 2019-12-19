@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="HIFI__V3" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="5" transform="translate(-795.000000, -382.000000)">
+            <g id="Hero" transform="translate(497.000000, 122.000000)">
+                <g id="Play-Video-Btn" transform="translate(279.000000, 247.000000)">
+                    <g id="Group-2" transform="translate(20.000000, 14.000000)">
+                        <circle id="Oval" stroke="#FFFFFF" stroke-width="2" cx="12" cy="12" r="12"></circle>
+                        <path d="M9.59610446,8.33530876 L16.380213,12.1513698 C16.5727561,12.2596753 16.6410442,12.5035613 16.5327387,12.6961045 C16.4968232,12.7599543 16.4440628,12.8127147 16.380213,12.8486302 L9.59610446,16.6646912 C9.40356132,16.7729968 9.1596753,16.7047087 9.05136978,16.5121655 C9.01769141,16.4522929 9,16.3847558 9,16.316061 L9,8.68393895 C9,8.46302507 9.17908609,8.28393898 9.39999998,8.28393898 C9.46869471,8.28393898 9.53623181,8.30163039 9.59610446,8.33530876 Z" id="" fill="#FFFFFF" fill-rule="nonzero"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

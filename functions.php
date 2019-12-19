@@ -45,6 +45,9 @@ if ( ! isset( $content_width ) ) {
 	$content_width = 584;
 }
 
+define( 'THEME_NAME', 'ISC Theme' );
+define( 'THEME_VERSION', '1.1.0' );
+
 /*
  * Tell WordPress to run twentyeleven_setup() when the 'after_setup_theme' hook is run.
  */
@@ -920,7 +923,7 @@ add_action( 'init', 'register_raj_nav_menu');
 // setup note
 function isc_note_irissetup_shortcode() {
 	$output = '<div class="isc--infobox">';
-	$output .= '  <div class="isc--infobox--icon"><i class="fas fa-info-circle"></i></div>';
+	$output .= '  <div class="isc--infobox--icon"><img src="' . get_template_directory_uri() . '/assets/images/alert-icon.svg""></div>';
 	$output .= '  <div class="isc--infobox--title">Note</div>';
 	$output .= '  <div>If you don’t have InterSystems IRIS set up yet,  <a href="http://www.intersystems.com/try">get a free development sandbox here</a>.</div>';
 	$output .= '</div>';
@@ -931,7 +934,7 @@ add_shortcode('isc_note_irissetup', 'isc_note_irissetup_shortcode');
 // generic note
 function isc_note_shortcode($atts, $content=null) {
 	$output = '<div class="isc--infobox">';
-	$output .= '  <div class="isc--infobox--icon"><i class="fas fa-info-circle"></i></div>';
+	$output .= '  <div class="isc--infobox--icon"><img src="' . get_template_directory_uri() . '/assets/images/alert-icon.svg""></div>';
 	$output .= '  <div class="isc--infobox--title">Note</div>';
 	$output .= '  <div>' . $content . '</div>';
 	$output .= '</div>';
@@ -942,7 +945,7 @@ add_shortcode('isc_note', 'isc_note_shortcode');
 // useful hint
 function isc_tip_shortcode($atts, $content=null) {
 	$output = '<div class="isc--infobox isc--infobox--tip">';
-	$output .= '  <div class="isc--infobox--icon"><i class="far fa-lightbulb"></i></i></div>';
+	$output .= '  <div class="isc--infobox--icon"><img src="' . get_template_directory_uri() . '/assets/images/alert-icon.svg""></i></div>';
 	$output .= '  <div class="isc--infobox--title isc--infobox--tip--title">Tip</div>';
 	$output .= '  <div>' . $content . '</div>';
 	$output .= '</div>';
@@ -968,7 +971,7 @@ add_shortcode('isc_note_timetocomplete', 'isc_note_timetocomplete_shortcode');
 // finding the Terminal
 function isc_note_terminal_shortcode() {
 	$output = '<div class="isc--infobox isc--infobox--warning">';
-	$output .= '  <div class="isc--infobox--icon"><i class="far fa-lightbulb"></i></div>';
+	$output .= '  <div class="isc--infobox--icon"><img src="' . get_template_directory_uri() . '/assets/images/alert-icon.svg""></i></div>';
 	$output .= '  <div class="isc--infobox--title isc--infobox--warning--title">Opening the IRIS Terminal</div>';
 	$output .= '  <ul>';
 	$output .= '    <li>Learning Labs Sandbox: from the InterSytems menu, select <strong>InterSystems IRIS Terminal</strong></li>';
@@ -1129,3 +1132,202 @@ function disable_wp_auto_p( $content ) {
 	return $content;
   }
   add_filter( 'the_content', 'disable_wp_auto_p', 0 );
+
+/**
+ * Enqueue Scripts - Load Front End JS
+ */
+function isc_enqueue_front_end_scripts() {
+
+	$version = THEME_VERSION;
+	$handle = sanitize_title_with_dashes( THEME_NAME );
+	//wp_dequeue_script('jquery');
+	wp_enqueue_script( $handle . 'main', get_template_directory_uri() . '/assets/js/main.min.js', array(), $version, true );
+
+}
+add_action( 'wp_enqueue_scripts', 'isc_enqueue_front_end_scripts' );
+
+/**
+ * Get Menu Name
+ */
+function isc_get_menu_name( $location ) {
+    if( empty($location) ) return false;
+
+    $locations = get_nav_menu_locations();
+    if( ! isset( $locations[$location] ) ) return false;
+
+    $menu_obj = get_term( $locations[$location], 'nav_menu' );
+
+    return $menu_obj->name;
+}
+
+/**
+* Custom Menu Walker to Add Span for Dropdown
+*/
+class Isc_Walker extends Walker_Nav_Menu {
+	function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+
+		// Close Tags and Add Span if Dropdown
+		$output .= '<li class="' .  implode(' ', $item->classes) . '">';
+		$output .= '<a href="' . $item->url . '" target="' . $item->target . '">';
+		$output .= $item->title;
+		$output .= '</a>';
+		if(in_array( 'menu-item-has-children', $item->classes)) {
+			$output .= '<span class="plus"><span class="horizontal"></span><span class="vertical"></span></span>';
+		}
+	}
+}
+
+/**
+* Add custom styles to the WordPress editor
+*/
+function isc_custom_styles( $init_array ) {
+
+    $style_formats = array(
+        // These are the custom styles
+        array(
+            'title'   => 'New Custom Styles',
+            'items' => array(
+		        array(
+		            'title' => 'Heading 1',
+		            'block' => 'span',
+		            'classes' => 'h_1',
+		            'wrapper' => true,
+		        ),
+		        array(
+		            'title' => 'Heading 2',
+		            'block' => 'span',
+		            'classes' => 'h_2',
+		            'wrapper' => true,
+		        ),
+		        array(
+		            'title' => 'Heading 3',
+		            'block' => 'span',
+		            'classes' => 'h_3',
+		            'wrapper' => true,
+		        ),
+		        array(
+		            'title' => 'Heading 4',
+		            'block' => 'span',
+		            'classes' => 'h_4',
+		            'wrapper' => true,
+		        ),
+		        array(
+		            'title' => 'Heading 5',
+		            'block' => 'span',
+		            'classes' => 'h_5',
+		            'wrapper' => true,
+		        ),
+		        array(
+		            'title' => 'Paragraph Small',
+		            'selector' => 'p',
+		            'classes' => 'p_sm',
+		            'wrapper' => true,
+		        ),
+		        array(
+		            'title' => 'Paragraph Large',
+		            'selector' => 'p',
+		            'classes' => 'p_lg',
+		            'wrapper' => true,
+		        ),
+            ),
+        ),
+    );
+    // Insert the array, JSON ENCODED, into 'style_formats'
+    $init_array['style_formats'] = json_encode( $style_formats );
+
+    return $init_array;
+
+}
+add_filter( 'tiny_mce_before_init', 'isc_custom_styles' );
+
+/** 
+* Common sense function for automating image retrieval 
+*/
+function isc_get_attachment( $attachment_id, $size = '' ) {
+
+	$attachment = get_post( $attachment_id );
+
+	if ( ! $attachment )
+		return;
+
+	$src = ( $size != '' ) ? wp_get_attachment_image_src( $attachment_id, $size )[0] : wp_get_attachment_url($attachment_id);
+	$srcset = wp_get_attachment_image_srcset( $attachment_id );
+
+	return array(
+		'alt' => get_post_meta( $attachment->ID, '_wp_attachment_image_alt', true ),
+		'href' => get_permalink( $attachment->ID ),
+		'src' => $src,
+		'srcset' => $srcset,
+	);
+}
+
+/**
+* EXTRA SHORTCODES
+*/
+
+// Button with option for video modal popup by adding class .js-modalTrigger and using video ID for brightcove video for iframe embed
+function isc_button_shortcode($atts) {
+	$values = shortcode_atts( array(
+		'class' => "isc_btn",
+		'href' => "#",
+		'label' => "Button Label",
+		'target' => "_self",
+	), $atts);
+
+	if(strpos($values['class'], 'js-modalTrigger') !== false) {
+		$output = '<a href="#' . $values['href'] . '" class="' . $values['class'] . '" target="' . $values['target'] . '"><img src="' . get_template_directory_uri() . '/assets/images/play-button.svg" />' . $values['label'] . '</a>';
+		$output .= '<div id="' . $values['href'] . '" class="int-modal int-modal--center">';
+		$output .= '<div class="int-modal__overlay"></div>';
+		$output .= '<div class="int-modal__dialog">';
+		$output .= '<div class="video-container">';
+		$output .= '<div class="video">';
+		$output .= '<div class="video-responsive">';
+		$output .= '<iframe src="https://players.brightcove.net/610060920001/SJUmxczP_default/index.html?videoId=' . $values['href'] . '" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>';
+		$output .= '</div>';
+		$output .= '</div>';
+		$output .= '</div>';
+		$output .= '<a href="#" class="int-modal__close js-closeModal">+</a>';
+		$output .= '</div>';
+		$output .= '</div>';
+	} else {
+		$output = '<a href="' . $values['href'] . '" class="' . $values['class'] . '" target="' . $values['target'] . '">' . $values['label'] . '</a>';
+	}
+
+	return $output;
+}
+add_shortcode('isc_button', 'isc_button_shortcode');
+
+// Content anchor for in page links
+function isc_anchor_shortcode($atts) {
+	$values = shortcode_atts( array(
+		'id' => "#",
+	), $atts);
+
+	$output = '<span id="' . $values['id'] . '" class="anchor-tag"></span>';
+
+	return $output;
+}
+add_shortcode('isc_anchor', 'isc_anchor_shortcode');
+
+// Content divider
+function isc_divider_shortcode() {
+
+	$output = '<div class="content-divider"></div>';
+
+	return $output;
+}
+add_shortcode('isc_divider', 'isc_divider_shortcode');
+
+// Add a menus to theme
+function isc_register_menus() {
+	register_nav_menu('top-menu', __('Top Menu'));
+	register_nav_menu('footer-menu', __('Footer Menu'));
+}
+add_action( 'init', 'isc_register_menus');
+
+/*
+Enable Options Page
+*/
+if( function_exists('acf_add_options_page') ) {	
+	acf_add_options_page();
+}

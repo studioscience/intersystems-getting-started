@@ -1,0 +1,53 @@
+.footer-flex-content {
+	position: relative;
+	display: block;
+	width: auto;
+	height: initial;
+	padding: 50px 25px 25px;
+	@media (min-width: 992px) {
+		padding: 120px 50px 25px 350px;
+	}
+	@media (min-width: 1200px) {
+		padding: 120px 100px 25px 400px;
+	}
+	.footer-menu {
+		margin: 0 0 20px;
+		@media (min-width: 768px) {
+			margin: 0 0 35px;
+			text-align: right;
+		}
+		li {
+			margin: 0 6px;
+			display: inline-block;
+			&:first-child {
+				margin-left: 0;
+			}
+			&:last-child {
+				margin-right: 0;
+			}
+			a {
+				@extend %footer_text;
+				color: $isc_green;
+			}
+		}
+	}
+	.footer-text {
+		@extend %footer_text;
+		margin: 0;
+		@media (min-width: 768px) {
+			margin: 0 0 35px;
+		}
+	}
+	.footer-legal {
+		p {
+			@extend %footer_legal;
+			color: $isc_gray;
+			a {
+				color: inherit;
+			}
+		}
+	}
+	.footer-menu {
+
+	}
+}

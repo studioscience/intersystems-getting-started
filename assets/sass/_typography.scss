@@ -1,0 +1,157 @@
+$gotham: "Gotham A", "Gotham B";
+
+// THEME FONT STYLES
+
+%gotham_book {
+	font-family: $gotham;
+	font-style: normal;
+	font-weight: 400;
+}
+
+%gotham_medium {
+	font-family: $gotham;
+	font-style: normal;
+	font-weight: 600;
+}
+
+%gotham_bold {
+	font-family: $gotham;
+	font-style: normal;
+	font-weight: 700;
+}
+
+%gotham_black {
+	font-family: $gotham;
+	font-style: normal;
+	font-weight: 800;
+}
+
+body {
+	@extend %gotham_book;
+}
+
+%h_1, .h_1 {
+	@extend %gotham_black;
+	font-size: 36px;
+	letter-spacing: -1.08px;
+	line-height: 44px;
+	@media (min-width: 992px) {
+		font-size: 52px;
+		letter-spacing: -1.56px;
+		line-height: 58px;
+	}
+}
+
+%h_2, .h_2 {
+	@extend %gotham_black;
+	font-size: 36px;
+	letter-spacing: -1.08px;
+	line-height: 44px;
+	@media (min-width: 992px) {
+		font-size: 48px;
+		letter-spacing: -1.44px;
+		line-height: 58px;
+	}
+}
+
+%h_3, .h_3 {
+	@extend %gotham_black;
+	font-size: 20px;
+	letter-spacing: -0.2px;
+	line-height: 38px;
+	@media (min-width: 992px) {
+		font-size: 36px;
+		letter-spacing: -1.08px;
+		line-height: 38px;
+	}	
+}
+
+%h_4, .h_4 {
+	@extend %gotham_black;
+	font-size: 20px;
+	letter-spacing: -0.2px;
+	line-height: 26px;
+	@media (min-width: 992px) {
+		font-size: 26px;
+		letter-spacing: -0.29px;
+		line-height: 28px;
+	}	
+}
+
+%h_5, .h_5 {
+	@extend %gotham_black;
+	font-size: 18px;
+	letter-spacing: -0.18px;
+	line-height: 26px;
+	@media (min-width: 992px) {
+		font-size: 20px;
+		letter-spacing: -0.2px;
+		line-height: 26px;
+	}
+}	
+
+%p, .p, p {
+	@extend %gotham_book;
+	font-size: 16px;
+	letter-spacing: -0.2px;
+	line-height: 26px;
+	@media (min-width: 992px) {
+		line-height: 24px;
+	}
+}
+
+%p_sm, .p_sm {
+	@extend %gotham_book;
+	font-size: 14px;
+	letter-spacing: -0.17px;
+	line-height: 22px;
+}
+
+%p_lg, .p_lg {
+	@extend %gotham_book;
+	font-size: 16px;
+	letter-spacing: -0.18px;
+	line-height: 26px;
+	@media (min-width: 992px) {
+		font-size: 18px;
+		letter-spacing: -0.2px;
+		line-height: 30px;
+	}
+}
+
+%time_text, .time_text {
+	@extend %gotham_book;
+	font-size: 16px;
+	color: #5E6977;
+	letter-spacing: -0.18px;
+}
+
+%sidebar_links, .sidebar_links {
+	font-size: 18px;
+	letter-spacing: -0.18px;
+	line-height: 26px;
+	@media (min-width: 768px) {
+		font-size: 14px;
+		letter-spacing: -0.17px;
+		line-height: 22px;
+	}
+}	
+
+%quote_text, .quote_text {
+	@extend %gotham_book;
+	font-size: 25px;
+	letter-spacing: -0.75px;
+	line-height: 42px;
+}
+
+%footer_text, .footer_text {
+	@extend %gotham_book;
+	font-size: 12px;
+	letter-spacing: 0;
+}
+
+%footer_legal, .footer_legal {
+	@extend %gotham_book;
+	font-size: 10px;
+	line-height: 16px;
+}

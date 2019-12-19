@@ -1,0 +1,92 @@
+.int-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99999999;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    opacity: 0;
+    transition: opacity .15s linear;
+
+    &__overlay {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        background-color: rgba( black, .6);
+        transition: opacity .15s linear;
+    }
+
+    &__dialog {
+        position: relative;
+        margin: 0 auto;
+        min-width: 25rem;
+        max-width: calc(100% - .01px) !important;
+        background-color: white;
+        opacity: 0;
+        transform: translateY(-100px);
+        transition: .3s linear;
+        transition-property: opacity, transform;
+    }
+
+    &__close {
+        color: $white;
+        position: absolute;
+        top: -2.5rem;
+        left: 0;
+        font-size: 50px;
+        font-weight: 300;
+        transform: rotate(45deg);
+        text-decoration: none;
+        &:link,
+        &:visited {
+            color: $white;
+        }
+        @media only screen and (min-width: 768px) {
+            top: -2.5rem;
+            left: -2.5rem;
+        }
+    }
+
+    &.is-open {
+        display: block;
+        opacity: 1;
+        .int-modal {
+            &__overlay {
+                opacity: 1;
+                transition: opacity .15s linear;
+            }
+            &__dialog {
+                opacity: 1;
+                transition: opacity .50s linear;
+                transform: translateY(0);
+            }
+        }
+    }
+
+    &--center {
+        .int-modal {
+            &__dialog {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-70%);
+            }
+        }
+
+        &.is-open {
+            .int-modal {
+                &__dialog {
+                    transform: none;
+                    transform: translate(-50%,-50%);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+.featured-logos {
+	text-align: center;
+	padding: 50px 0;
+	@media (min-width: 992px) {
+		padding: 90px 0;
+	}
+
+	&__title {
+		@extend %h_2;
+		margin-bottom: 55px;
+	}
+
+	&__logos {
+		.logo {
+			display: block;
+			margin: 15px 0;
+			img {
+				max-width: 250px;
+				margin: 0 auto;
+				@media only screen and (min-width: 992px) {
+					max-width: 100%;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,154 @@
+.default-text,
+.acf_content.page-template-page-flex-content {
+	ul {
+		list-style: none;
+		margin-left: 0;
+		li {
+			padding-left: 45px;
+			position: relative;
+			margin-top: 25px;
+			&:before {
+				content: "\25AA";
+				color: $isc_gray;
+				font-size: 20px;
+				font-weight: bold; 
+				display: block;
+				position: absolute;
+				width: 45px;
+				text-align: center;
+				left: -2px;
+				line-height: 25px;
+			}
+		}
+	}
+	p, li {
+		a:not(.isc_btn) {
+			text-decoration: underline;
+			color: $isc_green;
+			&:hover,
+			&:focus {
+				color: $isc_blue;
+			}
+		}
+	}
+	h2.numbered {
+		color: $black;
+		@extend %h_3;
+		position: relative;
+		padding-left: 50px;
+		margin-top: 91px;
+		@media (min-width: 992px) {
+			margin-top: 131px;
+		}
+		&:before {
+			content: counter(headingcounter2);
+			position: absolute;
+			display: block;
+			text-align: center;
+			top: 0;
+			left: 0;
+			font-size: 22px;
+			color: $black;
+			letter-spacing: -0.66px;
+			background-color: transparent;
+			vertical-align: middle;
+			margin: 0;
+			padding: 0;
+			line-height: 30px;
+			height: 30px;
+			width: 30px;
+			border-radius: 50%;
+			border: 4px solid $black;
+		}
+		&:after {
+			content: '';
+			display: block;
+			position: absolute;
+			top: -91px;
+			left: 0;
+			right: 0;
+			margin: 40px 0;
+			background-color: $isc_gray_2;
+			height: 11px;
+			width: 100%;
+			@media (min-width: 992px) {
+				top: -131px;
+				margin: 60px 0;
+			}
+		}
+	}
+
+	code {
+		color: $isc_purple;
+		background-color: $isc_purple_light;
+		border-radius: 0;
+	}
+
+	.menunav {
+		border-radius: 0;
+		background-color: $isc_gray_2;
+	    font-weight: 500;
+	}
+
+	br {
+		padding: 8px 0;
+		display: block;
+		width: 100%;
+		content: "";
+	}
+
+	ol {
+		margin-left: 0;
+		counter-reset: item;
+    	list-style-type: none;
+		li {
+			padding-left: 45px;
+			position: relative;
+			margin-top: 25px;
+			&:before {
+				content: counter(item); 
+    			counter-increment: item;
+				position: absolute;
+				display: block;
+				text-align: center;
+				font-weight: 800;
+				top: 5px;
+				left: 10px;
+				font-size: 11px;
+				letter-spacing: -0.12px;
+				color: $white;
+				background-color: $isc_purple;
+				vertical-align: middle;
+				margin: 0;
+				padding: 0;
+				line-height: 18px;
+				height: 18px;
+				width: 18px;
+				border-radius: 50%;
+			}
+			ol, ul {
+				list-style-type: upper-alpha;
+				padding-left: 30px;
+				li {
+					padding-left: 10px;
+					&:before {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+
+	table {
+		@extend %p_sm;
+		th {
+			padding: 6px 12px;
+			background-color: $isc_gray_2;
+			font-weight: 800;
+		}
+		td {
+			padding: 10px 12px;
+			border-bottom: 1px solid $isc_gray_2;
+		}
+	}
+}

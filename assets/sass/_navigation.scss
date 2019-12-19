@@ -1,0 +1,430 @@
+/* top navbar */
+#sitesmenu	{
+	overflow-x: scroll;
+	overflow-y: hidden;
+	background-color: $isc_blue;
+	width: 100%;
+	z-index: 9999;
+	-ms-overflow-style: none;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+	@media (min-width: 992px) {
+		position: fixed;
+	}	
+}
+.top-menu {
+	padding: 0 17px;
+    font-size: 12px;
+    font-weight: 600;
+    height: 32px;
+	letter-spacing: -0.15px;
+	white-space: nowrap;
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+
+	@media (min-width: 992px) {
+		font-size: 14px;
+		height: 36px;
+    	line-height: 36px;
+	}
+
+    li {
+    	position: relative;
+		display: inline-block;
+    	padding: 0 8px;
+    	margin: 0;
+	    a {
+			@extend %gotham_medium;
+		    color: $white;
+		    text-decoration: none;
+		    line-height: 32px;
+		    display: block;
+		    @media (min-width: 650px) {
+		    	line-height: 36px;
+		    }
+		}
+		&:before {
+			content: '';
+			position: absolute;
+			background-color: $isc_blue;
+			height: 2px;
+			width: 100%;
+			top: 0;
+			left: 0;
+			right: 0;
+			opacity: 0;
+			transition: all 200ms ease-in-out;
+		}
+		&.activesite,
+		&:hover,
+		&:focus {
+			&:before {
+				background-color: $white;
+				opacity: 1;
+			}	
+		}
+		&:last-child{
+			padding-right: 25px;
+			@media (min-width: 500px) {
+				padding-right: 8px;
+			}
+		}
+	}
+}
+
+/* primary navigation */
+.navbar {
+	position: relative;
+	width: 100%;
+	display: block;
+	background-color: $isc_blue_dark;
+	height: 100%;
+	z-index: 9999;
+	@media (min-width: 992px) {
+		width: 300px;
+		position: fixed;
+		top: 36px;
+	}
+	&.open {
+		.navbar__nav {
+			display: flex;
+		}
+	}
+	&__logo {
+		display: block;
+		width: 150px;
+		height: 66px;
+		margin: 0 auto;
+		img {
+		    width: 100%;
+		    height: auto;
+		    margin: 14px 0;
+		}		
+		@media (min-width: 992px) {
+			padding: 0 50px;
+			height: 97px;
+			width: 190px;
+			margin: 0;
+			img {
+				margin: 25px 0;
+			}
+		}
+	}
+	&__nav {
+		display: none;
+		position: relative;
+	    z-index: 999;
+	    background-color: $isc_blue_dark;
+	    border-top: 2px solid #383B48;
+	    padding: 30px 0;
+	    height: calc(100vh - 150px);
+	    flex-direction: column;
+		@media (min-width: 992px) {
+			display: flex;
+			height: calc(100vh - 185px);
+			padding: 25px 0;
+		}
+		.menu-title {
+			@extend %gotham_book;
+			color: $white;
+			font-size: 24px;
+			letter-spacing: -0.3px;
+			line-height: 30px;
+			display: block;
+			padding: 0 25px 30px;
+			margin-bottom: 0;
+			@media (min-width: 992px) {
+				padding: 0 50px 30px;
+				font-size: 20px;
+				letter-spacing: -0.25px;
+			}
+		}
+		.menu-cta {
+			position: relative;
+			margin-top: auto;
+			padding: 25px 25px 0;
+			@media (min-width: 992px) {
+				padding: 25px 50px 0;
+			}
+			&:before {
+				content: '';
+				position: absolute;
+				display: block;
+				top: -50px;
+				left: 0;
+				right: 0;
+				width: 100%;
+				height: 50px;
+				background: $isc_blue_dark;
+				background: -moz-linear-gradient(0deg, rgba($isc_blue_dark,1) 0%, rgba($isc_blue_dark,0) 100%);
+				background: -webkit-linear-gradient(0deg, rgba($isc_blue_dark,1) 0%, rgba($isc_blue_dark,0) 100%);
+				background: linear-gradient(0deg, rgba($isc_blue_dark,1) 0%, rgba($isc_blue_dark,0) 100%);
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#222533",endColorstr="#222533",GradientType=1);
+			}
+			&__text {
+				color: $white;
+				@extend %gotham_book;
+				font-size: 16px;
+				letter-spacing: -0.2px;
+				line-height: 26px;
+				margin-bottom: 15px;
+				@media (min-width: 992px) {
+					font-size: 14px;
+					letter-spacing: -0.17px;
+					line-height: 22px;
+				}
+			}
+			&__btn {
+				a {
+					display: block;
+				}
+			}
+		}
+		.primary-menu {
+			margin: 0;
+			position: relative;
+			overflow-x: hidden;
+			overflow-y: auto;
+			-ms-overflow-style: none;
+			&::-webkit-scrollbar {
+				display: none;
+			}
+			.menu-item {
+				display: block;
+				margin-top: 0;
+				list-style-type: none;
+				position: relative;
+				@extend %gotham_bold;
+				font-size: 20px;
+				letter-spacing: -0.25px;
+				line-height: 30px;
+				transition: all 200ms ease-in-out;
+				&:last-child {
+					padding-bottom: 40px;
+				}
+				a {
+					position: relative;
+					display: block;
+					padding: 15px 25px;
+					transition: all 200ms ease-in-out;
+					&:hover,
+					&:focus {
+						&:before {
+							content: '';
+							display: block;
+							position: absolute;
+							top: 0;
+							left: 0;
+							height: 100%;
+							width: 3px;
+							background-color: $isc_green;
+						}
+						&:after {
+							content: '';
+							display: block;
+							position: absolute;
+							background-color: rgba($white, 0.2);
+							width: 100%;
+	    					height: 100%;
+							top: 0;
+							bottom: 0;
+							left: 0;
+							right: 0;
+						}
+					}
+				}
+				@media (min-width: 992px) {
+					font-size: 16px;
+					letter-spacing: -0.2px;
+					line-height: 22px;
+					a {
+						padding: 12px 50px;
+					}
+				}
+				&.current_page_item {
+					> a {
+						font-weight: 700;
+						&:before {
+							content: '';
+							display: block;
+							position: absolute;
+							top: 0;
+							left: 0;
+							height: 100%;
+							width: 3px;
+							background-color: $isc_green;
+						}
+						&:after {
+							content: '';
+							display: block;
+							position: absolute;
+							background-color: rgba($white, 0.2);
+							width: 100%;
+	    					height: 100%;
+							top: 0;
+							bottom: 0;
+							left: 0;
+							right: 0;
+						}
+					}
+				}
+				&.menu-item-has-children {
+					> a {
+						padding-right: 36px;
+						z-index: 1;
+					}
+					.plus {
+						cursor: pointer;
+						position: absolute;
+						display: block;
+						height: 30px;
+						width: 30px;
+					    right: 25px;
+					    top: 15px;
+					    @media (min-width: 992px) {
+					    	top: 12px;
+					    	right: 25px;
+					    	height: 22px;
+							width: 22px;
+					    }
+						.horizontal {
+							transition: all 0.5s ease-in-out;
+							transform: rotate(-90deg);
+							position: absolute;
+							background-color: $white;
+							width: 11px;
+							height: 3px;
+							left: 50%;
+							margin-left: -5px;
+							top: 50%;
+							margin-top: -1px;
+						}
+						.vertical {
+							transition: all 0.5s ease-in-out;
+							transform: rotate(-90deg);
+							opacity: 1;
+							position: absolute;
+							background-color: $white;
+							width: 3px;
+							height: 11px;
+							left: 50%;
+							margin-left: -1px;
+							top: 50%;
+							margin-top: -5px;
+						}	
+					}
+					&.open {
+						.plus {
+							opacity: 1;
+							.vertical {
+								transition: all 0.5s ease-in-out;
+								transform: rotate(90deg);
+							}
+							.horizontal {
+								transition: all 0.5s ease-in-out;
+								transform: rotate(90deg);
+								opacity: 0;
+							}
+						}
+						.sub-menu {
+							display: block;
+						}
+					}
+				}
+			}
+			a {
+				color: $white;
+				text-decoration: none;
+			}
+			.sub-menu {
+				margin: 0;
+				display: none;
+				.menu-item {
+					@extend %gotham_book;
+					a {
+						padding-left: 40px;
+					}
+					&:last-child {
+						padding-bottom: 0;
+					}
+					@media (min-width: 992px) {
+						font-size: 16px;
+						letter-spacing: -0.2px;
+						line-height: 22px;
+						a {
+							padding-left: 65px;
+						}
+					}
+				}
+			}
+		}
+	}
+	.menu-toggle {
+		cursor: pointer;
+		position: absolute;
+		margin-top: 0;
+		top: 14px;
+		left: 25px;
+		width: 25px;
+		padding: 12px 0;
+		z-index: 9999999;
+		@media (min-width: 992px) {
+			display: none;
+		}
+
+		&.open {
+
+			.menu-toggle__bar {
+				background: white;
+				width: 22px;
+			}
+
+			.menu-toggle__bar--1 {
+				transform: rotate(45deg);
+				top: 6px;
+			}
+
+			.menu-toggle__bar--2 {
+				opacity: 0;
+			}
+
+			.menu-toggle__bar--3 {
+				transform: rotate(-45deg);
+				top: -6px;
+			}
+		}
+
+		&__bar {
+			position: relative;
+			display: block;
+			margin: 0 auto 4px;
+			width: 25px;
+			height: 2px;
+			background: white;
+			transition: all 0.4s ease;
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+.admin-bar {
+	#wpadminbar {
+		position: fixed;
+	}
+	@media (min-width: 782px) {
+		.navbar {
+			&__nav {
+				height: calc(100vh - 217px);
+			}
+		}
+	}
+	@media (min-width: 992px) {
+		.navbar {
+			top: 68px;
+		}	
+	}	
+}
