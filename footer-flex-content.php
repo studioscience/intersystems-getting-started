@@ -27,11 +27,13 @@ $legal_copy = get_field('legal_copy', 'options');
 				?>
 			</div>
 			<div class="col-xs-12 col-sm-7">
-				<div class="footer-legal">
-					<?php if($legal_copy) :
-						echo $legal_copy;
-					endif; ?>
-				</div>
+				<?php if(is_front_page()) : ?>
+					<div class="footer-legal">
+						<?php if($legal_copy) :
+							echo $legal_copy;
+						endif; ?>
+					</div>
+				<?php endif; ?>
 			</div>
 		</div>
 

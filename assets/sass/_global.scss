@@ -127,6 +127,9 @@ a:visited {
 
 #cookie-notice {
 	background-color: rgba($black,0.85)!important;
+	&.cookie-notice-hidden {
+		display: none;
+	}
 	.cookie-notice-container {
 		display: flex!important;
 		flex-wrap: wrap;

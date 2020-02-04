@@ -4996,6 +4996,8 @@ a:visited {
 
 #cookie-notice {
   background-color: rgba(0, 0, 0, 0.85) !important; }
+  #cookie-notice.cookie-notice-hidden {
+    display: none; }
   #cookie-notice .cookie-notice-container {
     display: -webkit-box !important;
     display: flex !important;
