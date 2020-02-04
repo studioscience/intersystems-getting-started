@@ -1290,6 +1290,14 @@
 		"oAP": "/page.php",
 		"oF": 0
 		},
+	"/readme.txt": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/readme.txt",
+		"oF": 0
+		},
 	"/rtl.css": {
 		"aP": 1,
 		"bl": 0,
