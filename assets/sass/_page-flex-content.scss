@@ -62,17 +62,16 @@
 				text-decoration: none;
 				&:hover,
 				&:focus {
-					text-decoration: underline;
+					opacity: 0.75;
 				}
 			}
 			.breadcrumb_last{
 				font-weight: 400;
-				color: $isc_green;
-				text-decoration: underline;
 			}
-			i {
-				color: $isc_gray;
-				padding: 6px;
+			.style-svg {
+				padding: 0 6px;
+				height: 8px;
+				width: 5px;
 			}
 		}
 	}
@@ -134,17 +133,16 @@
 			position: relative;
 			&:before {
 				position: absolute;
+				content: '';
 				display: block;
-				top: 13px;
+				top: 23px;
 				right: 20px;
-				font-size: 18px;
-				font-style: normal;
-				font-variant: normal;
-				text-rendering: auto;
-				-webkit-font-smoothing: antialiased;
-				font-family: "FontAwesome";
-				content: "\f107";
 				transition: all 300ms ease-in-out;
+				background-image: url('./assets/images/dropdown-arrow.svg');
+				background-repeat: no-repeat;
+				background-size: 12px 9px;
+				width: 12px;
+				height: 9px;
 			}
 			&.open {
 				&:before {
@@ -195,7 +193,6 @@
 					}
 					&.active {
 						a {
-							text-decoration: underline;
 							color: $isc_green;
 							&:hover,
 							&:focus {

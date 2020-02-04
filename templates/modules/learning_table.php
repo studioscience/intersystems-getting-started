@@ -53,8 +53,11 @@ $table_rows = get_sub_field('table_rows');
 											<?php foreach($tr['row_links'] as $rl) : ?>
 												<td>
 													<?php if($rl['link']) : ?>
-														<a href="<?php echo $rl['link']; ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/circle-arrow.svg"></a>
+														<a href="<?php echo $rl['link']; ?>">
+															<img class="static" src="<?php echo get_template_directory_uri(); ?>/assets/images/circle-arrow.svg">
+															<img class="active" src="<?php echo get_template_directory_uri(); ?>/assets/images/circle-arrow-active.svg"></a>
 													<?php else : ?>
+														—
 														<!-- not available -->
 													<?php endif; ?>
 												</td>
@@ -91,7 +94,8 @@ $table_rows = get_sub_field('table_rows');
 												<div class="link">
 													<a href="<?php echo $tr['row_links'][$i]['link']; ?>">
 														<strong><?php echo $tr['row_text']; ?></strong>
-														<img src="<?php echo get_template_directory_uri(); ?>/assets/images/circle-arrow.svg">
+														<img class="static" src="<?php echo get_template_directory_uri(); ?>/assets/images/circle-arrow.svg">
+														<img class="active" src="<?php echo get_template_directory_uri(); ?>/assets/images/circle-arrow-active.svg"></a>
 													</a>
 												</div>
 											<?php endif; ?>
@@ -106,5 +110,4 @@ $table_rows = get_sub_field('table_rows');
 
 			</div>
 		</div>
-
 </section>

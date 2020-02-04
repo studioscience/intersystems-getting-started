@@ -42,6 +42,11 @@ $(function() {
 		});
 	}
 
+	var page = $("#page");
+	$(document).scroll(function () {
+		page.toggleClass('scrolled', $(this).scrollTop() > 36);	
+	});
+
 	// Quotes Carousel //
 	var quotesCarousel = $('.quotes-carousel .owl-carousel');
 	quotesCarousel.owlCarousel({
@@ -54,7 +59,7 @@ $(function() {
 		autoHeight: false,
 		onInitialized: quotesController,
 		onChanged: quotesController,
-		navText: ['<i class="fa fa-arrow-left"></i>','<i class="fa fa-arrow-right"></i>']
+		navText: ['<img class="style-svg" src="/wp-content/themes/isctwentyeleven/assets/images/arrow-white.svg">','<img class="style-svg" src="/wp-content/themes/isctwentyeleven/assets/images/arrow-white.svg">']
 	});
 
 	function quotesController(event) {

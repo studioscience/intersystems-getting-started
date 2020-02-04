@@ -15,18 +15,15 @@
 	    transition: all 200ms ease-in-out;
 		&:after {
 			position: absolute;
-			display: block;
-			top: calc(50% - 15px);
+			content: '';
+			top: calc(50% - 8px);
 			right: 30px;
-			font-size: 20px;
-			font-style: normal;
-			font-variant: normal;
-			text-rendering: auto;
-			-webkit-font-smoothing: antialiased;
-			font-family: "FontAwesome";
-			content: "\f35d";
 			transition: all 200ms ease-in-out;
-			-webkit-text-stroke: 1px $white;
+			background-image: url('./assets/images/link-external-black.svg');
+			background-repeat: no-repeat;
+			background-size: 18px 18px;
+			width: 18px;
+			height: 18px;
 		}
 		&:last-child {
 			margin-bottom: 0;
@@ -38,7 +35,7 @@
 				color: $isc_green;
 			}
 			&:after {
-				color: $isc_green;
+				background-image: url('./assets/images/link-external.svg');
 			}
 		}
 		&__title {

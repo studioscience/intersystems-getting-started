@@ -1,4 +1,20 @@
 /* top navbar */
+#page.scrolled {
+	.top-menu {
+		@media (min-width: 992px) {
+			height: 0;
+		}
+	}
+	.navbar {
+		@media (min-width: 992px) {
+			top: 0;
+			&__nav {
+				height: calc(100vh - 150px);
+			}
+		}
+	}
+}	
+
 #sitesmenu	{
 	overflow-x: scroll;
 	overflow-y: hidden;
@@ -23,6 +39,7 @@
     display: flex;
     list-style-type: none;
     margin: 0;
+    transition: all 300ms ease-in-out;
 
 	@media (min-width: 992px) {
 		font-size: 14px;
@@ -79,9 +96,10 @@
 	position: relative;
 	width: 100%;
 	display: block;
-	background-color: $isc_blue_dark;
+	background-color: $isc_gray_2;
 	height: 100%;
 	z-index: 9999;
+	transition: all 300ms ease-in-out;
 	@media (min-width: 992px) {
 		width: 300px;
 		position: fixed;
@@ -116,11 +134,12 @@
 		display: none;
 		position: relative;
 	    z-index: 999;
-	    background-color: $isc_blue_dark;
-	    border-top: 2px solid #383B48;
+	    background-color: $isc_gray_2;
+	    border-top: 4px solid $white;
 	    padding: 30px 0;
 	    height: calc(100vh - 150px);
 	    flex-direction: column;
+	    transition: all 300ms ease-in-out;
 		@media (min-width: 992px) {
 			display: flex;
 			height: calc(100vh - 185px);
@@ -128,7 +147,7 @@
 		}
 		.menu-title {
 			@extend %gotham_book;
-			color: $white;
+			color: $black;
 			font-size: 24px;
 			letter-spacing: -0.3px;
 			line-height: 30px;
@@ -157,14 +176,14 @@
 				right: 0;
 				width: 100%;
 				height: 50px;
-				background: $isc_blue_dark;
-				background: -moz-linear-gradient(0deg, rgba($isc_blue_dark,1) 0%, rgba($isc_blue_dark,0) 100%);
-				background: -webkit-linear-gradient(0deg, rgba($isc_blue_dark,1) 0%, rgba($isc_blue_dark,0) 100%);
-				background: linear-gradient(0deg, rgba($isc_blue_dark,1) 0%, rgba($isc_blue_dark,0) 100%);
+				background: $isc_gray_2;
+				background: -moz-linear-gradient(0deg, rgba($isc_gray_2,1) 0%, rgba($isc_gray_2,0) 100%);
+				background: -webkit-linear-gradient(0deg, rgba($isc_gray_2,1) 0%, rgba($isc_gray_2,0) 100%);
+				background: linear-gradient(0deg, rgba($isc_gray_2,1) 0%, rgba($isc_gray_2,0) 100%);
 				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#222533",endColorstr="#222533",GradientType=1);
 			}
 			&__text {
-				color: $white;
+				color: $black;
 				@extend %gotham_book;
 				font-size: 16px;
 				letter-spacing: -0.2px;
@@ -225,13 +244,14 @@
 							content: '';
 							display: block;
 							position: absolute;
-							background-color: rgba($white, 0.2);
+							background-color: rgba($white, 0.45);
 							width: 100%;
 	    					height: 100%;
 							top: 0;
 							bottom: 0;
 							left: 0;
 							right: 0;
+							z-index: -1;
 						}
 					}
 				}
@@ -260,13 +280,14 @@
 							content: '';
 							display: block;
 							position: absolute;
-							background-color: rgba($white, 0.2);
+							background-color: $white;
 							width: 100%;
 	    					height: 100%;
 							top: 0;
 							bottom: 0;
 							left: 0;
 							right: 0;
+						    z-index: -1;
 						}
 					}
 				}
@@ -293,7 +314,7 @@
 							transition: all 0.5s ease-in-out;
 							transform: rotate(-90deg);
 							position: absolute;
-							background-color: $white;
+							background-color: $black;
 							width: 11px;
 							height: 3px;
 							left: 50%;
@@ -306,7 +327,7 @@
 							transform: rotate(-90deg);
 							opacity: 1;
 							position: absolute;
-							background-color: $white;
+							background-color: $black;
 							width: 3px;
 							height: 11px;
 							left: 50%;
@@ -335,7 +356,7 @@
 				}
 			}
 			a {
-				color: $white;
+				color: $black;
 				text-decoration: none;
 			}
 			.sub-menu {
@@ -377,7 +398,7 @@
 		&.open {
 
 			.menu-toggle__bar {
-				background: white;
+				background: $black;
 				width: 22px;
 			}
 
@@ -402,7 +423,7 @@
 			margin: 0 auto 4px;
 			width: 25px;
 			height: 2px;
-			background: white;
+			background: $black;
 			transition: all 0.4s ease;
 			&:last-child {
 				margin-bottom: 0;

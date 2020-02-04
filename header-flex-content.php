@@ -25,13 +25,17 @@
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width" />
-<!-- Google Tag Manager -->
-<!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PKG7GB');</script> -->
-<!-- End Google Tag Manager -->
+
+<?php if ( function_exists('cn_cookies_accepted') && cn_cookies_accepted() ) : ?>
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-PKG7GB');</script>
+	<!-- End Google Tag Manager -->
+<?php endif; ?>
+
 <title>
 <?php
 	// Print the <title> tag based on what is being viewed.
@@ -60,9 +64,6 @@ if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
 <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/7769156/6509172/css/fonts.css" />
 
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>?ver=<?php echo THEME_VERSION; ?>" />
-<!-- Raj added 2 lines below -->
-<!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,500,600,700&display=swap" rel="stylesheet">  -->
-<!-- <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700&display=swap" rel="stylesheet"> -->
 
 <link rel="pingback" href="<?php echo esc_url( get_bloginfo( 'pingback_url' ) ); ?>">
 <!--[if lt IE 9]>
@@ -91,10 +92,12 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
 
 <body <?php body_class(); ?>>
 
-<!-- Google Tag Manager (noscript) -->
-<!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PKG7GB"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
-<!-- End Google Tag Manager (noscript) -->
+<?php if ( function_exists('cn_cookies_accepted') && cn_cookies_accepted() ) : ?>
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PKG7GB"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+<?php endif; ?>
 
 <?php wp_body_open(); ?>
 <div id="page" class="hfeed">
