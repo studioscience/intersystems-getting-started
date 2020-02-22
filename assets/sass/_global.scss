@@ -166,3 +166,97 @@ a:visited {
 		}
 	}
 }
+
+.isc_infobox {
+	border: 5px solid #2F2A96;
+	padding: 25px;
+	margin: 20px 0;
+	display: flex;
+	justify-content: space-between;
+	&--tip {
+		border: 5px solid #00B2AA;
+		.isc_infobox--icon {
+			img {
+				max-width: 18px;
+			}
+		}
+	}
+	&--warning {
+		border: 5px solid #A75348;
+	}
+
+	&--icon {
+		flex-basis: 26px;
+		img {
+			max-width: 25px;
+			margin: 2px auto;
+			display: block;
+		}
+	}
+	&--content {
+		flex-basis: calc(100% - 40px);
+		li {
+		    margin-top: 10px!important;
+		}
+	}
+}
+
+ol {
+	&.two {
+		counter-reset: item 1!important;
+	}
+	&.three {
+		counter-reset: item 2!important;
+	}
+	&.four {
+		counter-reset: item 3!important;
+	}
+	&.five {
+		counter-reset: item 4!important;
+	}
+	&.six {
+		counter-reset: item 5!important;
+	}
+	&.seven {
+		counter-reset: item 6!important;
+	}
+	&.eight {
+		counter-reset: item 7!important;
+	}
+	&.nine {
+		counter-reset: item 8!important;
+	}
+	&.ten {
+		counter-reset: item 9!important;
+	}
+	&.eleven {
+		counter-reset: item 10!important;
+	}
+	&.twelve {
+		counter-reset: item 11!important;
+	}
+	&.thirteen {
+		counter-reset: item 12!important;
+	}
+	&.fourteen {
+		counter-reset: item 13!important;
+	}
+	&.fifteen {
+		counter-reset: item 14!important;
+	}
+	&.sixteen {
+		counter-reset: item 15!important;
+	}
+	&.seventeen {
+		counter-reset: item 16!important;
+	}
+	&.eighteen {
+		counter-reset: item 17!important;
+	}
+	&.nineteen {
+		counter-reset: item 18!important;
+	}
+	&.twenty {
+		counter-reset: item 19!important;
+	}
+}

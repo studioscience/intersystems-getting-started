@@ -93,6 +93,39 @@
 		"plM": 52780316221407,
 		"prP": 0
 		},
+	"/assets/images/icon-info.png": {
+		"ft": 32768,
+		"iS": 1968,
+		"oA": 0,
+		"oAP": "/assets/images/icon-info.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"/assets/images/icon-tip.png": {
+		"ft": 32768,
+		"iS": 1252,
+		"oA": 0,
+		"oAP": "/assets/images/icon-tip.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"/assets/images/icon-warning.png": {
+		"ft": 32768,
+		"iS": 1278,
+		"oA": 0,
+		"oAP": "/assets/images/icon-warning.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
 	"/assets/images/link-arrow-black.svg": {
 		"ft": 2097152,
 		"miP": 0,

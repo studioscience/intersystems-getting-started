@@ -922,10 +922,9 @@ add_action( 'init', 'register_raj_nav_menu');
 
 // setup note
 function isc_note_irissetup_shortcode() {
-	$output = '<div class="isc--infobox">';
-	$output .= '  <div class="isc--infobox--icon"><img src="' . get_template_directory_uri() . '/assets/images/alert-icon.svg""></div>';
-	$output .= '  <div class="isc--infobox--title">Note</div>';
-	$output .= '  <div>If you don’t have InterSystems IRIS set up yet,  <a href="http://www.intersystems.com/try">get a free development sandbox here</a>.</div>';
+	$output = '<div class="isc_infobox">';
+	$output .= '  <div class="isc_infobox--icon"><img src="' . get_template_directory_uri() . '/assets/images/icon-info.png""></div>';
+	$output .= '  <div class="isc_infobox--content">If you don’t have InterSystems IRIS set up yet,  <a href="http://www.intersystems.com/try">get a free development sandbox here</a>.</div>';
 	$output .= '</div>';
 	return $output;
 }
@@ -933,10 +932,9 @@ add_shortcode('isc_note_irissetup', 'isc_note_irissetup_shortcode');
 
 // generic note
 function isc_note_shortcode($atts, $content=null) {
-	$output = '<div class="isc--infobox">';
-	$output .= '  <div class="isc--infobox--icon"><img src="' . get_template_directory_uri() . '/assets/images/alert-icon.svg""></div>';
-	$output .= '  <div class="isc--infobox--title">Note</div>';
-	$output .= '  <div>' . $content . '</div>';
+	$output = '<div class="isc_infobox">';
+	$output .= '  <div class="isc_infobox--icon"><img src="' . get_template_directory_uri() . '/assets/images/icon-info.png"></div>';
+	$output .= '  <div class="isc_infobox--content">' . $content . '</div>';
 	$output .= '</div>';
 	return $output;
 }
@@ -944,14 +942,23 @@ add_shortcode('isc_note', 'isc_note_shortcode');
 
 // useful hint
 function isc_tip_shortcode($atts, $content=null) {
-	$output = '<div class="isc--infobox isc--infobox--tip">';
-	$output .= '  <div class="isc--infobox--icon"><img src="' . get_template_directory_uri() . '/assets/images/alert-icon.svg""></i></div>';
-	$output .= '  <div class="isc--infobox--title isc--infobox--tip--title">Tip</div>';
-	$output .= '  <div>' . $content . '</div>';
+	$output = '<div class="isc_infobox isc_infobox--tip">';
+	$output .= '  <div class="isc_infobox--icon"><img src="' . get_template_directory_uri() . '/assets/images/icon-tip.png""></i></div>';
+	$output .= '  <div class="isc_infobox--content">' . $content . '</div>';
 	$output .= '</div>';
 	return $output;
 }
 add_shortcode('isc_tip', 'isc_tip_shortcode');
+
+// warning note
+function isc_warning_shortcode($atts, $content=null) {
+	$output = '<div class="isc_infobox isc_infobox--warning">';
+	$output .= '  <div class="isc_infobox--icon"><img src="' . get_template_directory_uri() . '/assets/images/icon-warning.png""></i></div>';
+	$output .= '  <div class="isc_infobox--content">' . $content . '</div>';
+	$output .= '</div>';
+	return $output;
+}
+add_shortcode('isc_warning', 'isc_warning_shortcode');
 
 // time to completion
 function isc_note_timetocomplete_shortcode($atts, $content=null) {
@@ -959,10 +966,10 @@ function isc_note_timetocomplete_shortcode($atts, $content=null) {
 		'minutes' => '10',
 	), $atts);
 
-	$output = '<div class="isc--infobox isc--infobox--warning">';
-	$output .= '  <div class="isc--infobox--icon"><i class="fas fa-user-clock" style="font-size:smaller"></i></div>';
-	$output .= '  <div class="isc--infobox--title isc--infobox--warning--title">' . $vals['minutes'] . ' minutes</div>';
-	$output .= '  <div>estimated time of completion</a>.</div>';
+	$output = '<div class="isc_infobox">';
+	$output .= '  <div class="isc_infobox--icon"><i class="fas fa-user-clock" style="font-size:smaller"></i></div>';
+	$output .= '  <div class="isc_infobox--title isc_infobox--warning--title">' . $vals['minutes'] . ' minutes</div>';
+	$output .= '  <div class="isc_infobox--content">estimated time of completion</a>.</div>';
 	$output .= '</div>';
 	return $output;
 }
@@ -970,13 +977,15 @@ add_shortcode('isc_note_timetocomplete', 'isc_note_timetocomplete_shortcode');
 
 // finding the Terminal
 function isc_note_terminal_shortcode() {
-	$output = '<div class="isc--infobox isc--infobox--warning">';
-	$output .= '  <div class="isc--infobox--icon"><img src="' . get_template_directory_uri() . '/assets/images/alert-icon.svg""></i></div>';
-	$output .= '  <div class="isc--infobox--title isc--infobox--warning--title">Opening the IRIS Terminal</div>';
+	$output = '<div class="isc_infobox">';
+	$output .= '  <div class="isc_infobox--icon"><img src="' . get_template_directory_uri() . '/assets/images/icon-info.png""></i></div>';
+	$output .= '  <div class="isc_infobox--content">';
+	$output .= '  <div class="isc_infobox--title">Opening the IRIS Terminal</div>';
 	$output .= '  <ul>';
 	$output .= '    <li>Learning Labs Sandbox: from the InterSytems menu, select <strong>InterSystems IRIS Terminal</strong></li>';
 	$output .= '    <li>Docker-based: from the container host’s shell, use the command <code>docker exec -it try-iris iris terminal &lt;IRIS instance name&gt;</code></li>';
 	$output .= '  </ul>';
+	$output .= '</div>';
 	$output .= '</div>';
 	return $output;
 }

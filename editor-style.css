@@ -5791,6 +5791,86 @@ a:visited {
         #cookie-notice .cookie-notice-container .cn-buttons-container {
           flex-basis: 20%; } }
 
+.isc_infobox {
+  border: 5px solid #2F2A96;
+  padding: 25px;
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between; }
+  .isc_infobox--tip {
+    border: 5px solid #00B2AA; }
+    .isc_infobox--tip .isc_infobox--icon img {
+      max-width: 18px; }
+  .isc_infobox--warning {
+    border: 5px solid #A75348; }
+  .isc_infobox--icon {
+    flex-basis: 26px; }
+    .isc_infobox--icon img {
+      max-width: 25px;
+      margin: 2px auto;
+      display: block; }
+  .isc_infobox--content {
+    flex-basis: calc(100% - 40px); }
+    .isc_infobox--content li {
+      margin-top: 10px !important; }
+
+ol.two {
+  counter-reset: item 1 !important; }
+
+ol.three {
+  counter-reset: item 2 !important; }
+
+ol.four {
+  counter-reset: item 3 !important; }
+
+ol.five {
+  counter-reset: item 4 !important; }
+
+ol.six {
+  counter-reset: item 5 !important; }
+
+ol.seven {
+  counter-reset: item 6 !important; }
+
+ol.eight {
+  counter-reset: item 7 !important; }
+
+ol.nine {
+  counter-reset: item 8 !important; }
+
+ol.ten {
+  counter-reset: item 9 !important; }
+
+ol.eleven {
+  counter-reset: item 10 !important; }
+
+ol.twelve {
+  counter-reset: item 11 !important; }
+
+ol.thirteen {
+  counter-reset: item 12 !important; }
+
+ol.fourteen {
+  counter-reset: item 13 !important; }
+
+ol.fifteen {
+  counter-reset: item 14 !important; }
+
+ol.sixteen {
+  counter-reset: item 15 !important; }
+
+ol.seventeen {
+  counter-reset: item 16 !important; }
+
+ol.eighteen {
+  counter-reset: item 17 !important; }
+
+ol.nineteen {
+  counter-reset: item 18 !important; }
+
+ol.twenty {
+  counter-reset: item 19 !important; }
+
 /*--------------------------------------------------------------
 # Partials
 --------------------------------------------------------------*/

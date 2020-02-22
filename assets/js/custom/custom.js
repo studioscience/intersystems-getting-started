@@ -15,6 +15,10 @@ $(function() {
 		$(this).parent().toggleClass("open");
 	});
 
+	if($('.current-menu-ancestor')[0]) {
+		$('.current-menu-ancestor').addClass('open');
+	}
+
 	// Modal Init
 	if ( $('.js-ModalTrigger' ) ) {
 		Modal.init();
