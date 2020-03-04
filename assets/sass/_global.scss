@@ -259,4 +259,7 @@ ol {
 	&.twenty {
 		counter-reset: item 19!important;
 	}
+	ol {
+		counter-reset: revert!important;
+	}
 }
