@@ -780,14 +780,6 @@
 		"oAP": "/footer.php",
 		"oF": 0
 		},
-	"/functions.php": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/functions.php",
-		"oF": 0
-		},
 	"/functions_20190902.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -802,6 +794,14 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/functions_20200204.php",
+		"oF": 0
+		},
+	"/functions_20200304.php": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/functions_20200304.php",
 		"oF": 0
 		},
 	"/header-flex-content.php": {
