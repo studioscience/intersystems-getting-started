@@ -1160,7 +1160,7 @@ function isc_button_shortcode($atts) {
 		$output .= '<div class="video-container">';
 		$output .= '<div class="video">';
 		$output .= '<div class="video-responsive">';
-		$output .= '<iframe src="https://players.brightcove.net/610060920001/SJUmxczP_default/index.html?videoId=' . $values['href'] . '" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>';
+		$output .= '<iframe class="vidyard_iframe" src="https://players.brightcove.net/610060920001/SJUmxczP_default/index.html?videoId=' . $values['href'] . '" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>';
 		$output .= '</div>';
 		$output .= '</div>';
 		$output .= '</div>';
