@@ -26,13 +26,21 @@
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width" />
 
-<?php if ( function_exists('cn_cookies_accepted') && cn_cookies_accepted() ) : ?>
+<!-- ?php if ( function_exists('cn_cookies_accepted') && cn_cookies_accepted() ) : ?> -->
+<?php if ( function_exists('activate_em_cookie_notification') ) : ?>
+	<!-- Uncomment for production -->
+	<!-- Heap -->
+	<!-- <script type="text/javascript">   
+		window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.heapanalytics.com/js/heap-"+e+".js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a);for(var n=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","resetIdentity","removeEventProperty","setEventProperties","track","unsetEventProperty"],o=0;o<p.length;o++)heap[p[o]]=n(p[o])};   
+		heap.load("2183293721"); 
+	</script> -->
+	<!-- End Heap -->
 	<!-- Google Tag Manager -->
-	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	<!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-	})(window,document,'script','dataLayer','GTM-PKG7GB');</script>
+	})(window,document,'script','dataLayer','GTM-PKG7GB');</script> -->
 	<!-- End Google Tag Manager -->
 <?php endif; ?>
 
@@ -44,13 +52,13 @@
 	wp_title( '|', true, 'right' );
 
 	// Add the blog name.
-	bloginfo( 'name' );
+	// bloginfo	( 'name' );
 
 	// Add the blog description for the home/front page.
-	$site_description = get_bloginfo( 'description', 'display' );
-if ( $site_description && ( is_home() || is_front_page() ) ) {
-	echo " | $site_description";
-}
+	// $site_description = get_bloginfo( 'description', 'display' );
+	// if ( $site_description && ( is_home() || is_front_page() ) ) {
+	// 	echo " | $site_description";
+	// }
 
 	// Add a page number if necessary:
 if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
@@ -92,7 +100,7 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
 
 <body <?php body_class(); ?>>
 
-<?php if ( function_exists('cn_cookies_accepted') && cn_cookies_accepted() ) : ?>
+<?php if ( function_exists('activate_em_cookie_notification') ) : ?>
 	<!-- Google Tag Manager (noscript) -->
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PKG7GB"
 	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -117,12 +125,12 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
 	<header class="navbar" role="banner">
 
  		<hgroup>
-			<h1 id="site-title"><span><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
-			<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
+			<div id="site-title"><span><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></div>
+			<div id="site-description"><?php bloginfo( 'description' ); ?></div>
 		</hgroup>
 
 		<a href="/" class="navbar__logo" rel="home">
-			<img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg" />
+			<img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg" alt="InterSystems: Creative data technology" />
 		</a>
 		
 		<div class="navbar__nav">
@@ -137,7 +145,10 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
 						'container'      => false,
 						'depth'          => 2,
 						'menu_class'     => 'primary-menu',
-						'items_wrap'     => '<p class="menu-title">' . esc_html(isc_get_menu_name('primary')) . '</p><ul class="%2$s">%3$s</ul><div class="menu-cta"><div class="menu-cta__text">' . $bottom_cta . '</div><div class="menu-cta__btn">' . $bottom_cta_link . '</div></div>',
+						// Puts the title above the menu
+						// 'items_wrap'     => '<p class="menu-title">' . esc_html(isc_get_menu_name('primary')) . '</p><ul class="%2$s">%3$s</ul>',
+						// Puts the title above the menu and the 'TRY FOR FREE' button below it
+						// 'items_wrap'     => '<p class="menu-title">' . esc_html(isc_get_menu_name('primary')) . '</p><ul class="%2$s">%3$s</ul><div class="menu-cta"><div class="menu-cta__text">' . $bottom_cta . '</div><div class="menu-cta__btn">' . $bottom_cta_link . '</div></div>',
 						'walker'         => new Isc_Walker()
 					)
 				);

@@ -86,6 +86,7 @@ var Modal = (function($) {
         video.attr('src', video.attr('src'));
 
         setTimeout(function() {
+            console.log("ERE")
             obj.css('display', 'none');
             $('body').removeClass('v-noscroll').removeClass('modal-is-open');
         }, 300);

@@ -27,7 +27,6 @@ get_header(); ?>
 
 			</div><!-- #content -->
 		</div><!-- #primary -->
-		<script src="https://admin.mobilecoach.com/widgets/f1a7139556517957b5235bad870778a25a1fcee0af4a089317359aa63f64857b/loader.js"></script>
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

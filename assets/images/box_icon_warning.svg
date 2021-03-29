@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="172.5 462.5 55 55" width="55" height="55">
+  <g id="Canvas_1" stroke-dasharray="none" fill-opacity="1" fill="none" stroke-opacity="1" stroke="none">
+    <g id="Canvas_1: Layer 1">
+      <g id="Graphic_6">
+        <path d="M 174.5 515.5 L 200 464.5 L 225.5 515.5 Z" stroke="#ca1b01" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+      </g>
+      <g id="Graphic_50">
+        <path d="M 199.136 496.752 L 197.084 487.68 L 197.084 480.372 L 202.916 480.372 L 202.916 487.68 L 200.864 496.752 Z M 200 505.932 C 198.704 505.932 197.792 505.656 197.264 505.104 C 196.736 504.552 196.472 503.892 196.472 503.124 L 196.472 501.972 C 196.472 501.228 196.742 500.58 197.282 500.028 C 197.822 499.476 198.728 499.2 200 499.2 C 201.272 499.2 202.178 499.476 202.718 500.028 C 203.258 500.58 203.528 501.228 203.528 501.972 L 203.528 503.124 C 203.528 503.892 203.264 504.552 202.736 505.104 C 202.208 505.656 201.296 505.932 200 505.932 Z" fill="#ca1b01"/>
+      </g>
+    </g>
+  </g>
+</svg>

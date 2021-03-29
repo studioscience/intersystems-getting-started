@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="172.5 203.5 55 55" width="55" height="55">
+  <defs/>
+  <metadata> Produced by OmniGraffle 7.15.2 
+    <dc:date>2020-06-17 18:44:32 +0000</dc:date>
+  </metadata>
+  <g id="Canvas_1" stroke-dasharray="none" fill-opacity="1" fill="none" stroke-opacity="1" stroke="none">
+    <title>Canvas 1</title>
+    <rect fill="white" x="172.5" y="203.5" width="55" height="55"/>
+    <g id="Canvas_1: Layer 1">
+      <title>Layer 1</title>
+      <g id="Graphic_4">
+        <circle cx="200" cy="231" r="25.5000407464984" stroke="#2b3589" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+      </g>
+      <g id="Graphic_49">
+        <title/>
+        <path d="M 199.136 235.752 L 197.084 226.68 L 197.084 219.372 L 202.916 219.372 L 202.916 226.68 L 200.864 235.752 Z M 200 244.932 C 198.704 244.932 197.792 244.656 197.264 244.104 C 196.736 243.552 196.472 242.892 196.472 242.124 L 196.472 240.972 C 196.472 240.228 196.742 239.58 197.282 239.028 C 197.822 238.476 198.728 238.2 200 238.2 C 201.272 238.2 202.178 238.476 202.718 239.028 C 203.258 239.58 203.528 240.228 203.528 240.972 L 203.528 242.124 C 203.528 242.892 203.264 243.552 202.736 244.104 C 202.208 244.656 201.296 244.932 200 244.932 Z" fill="#2b3589"/>
+      </g>
+    </g>
+  </g>
+</svg>

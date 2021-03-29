@@ -11,17 +11,18 @@ get_header('flex-content'); ; ?>
 
 	<div class="flex-content">
 		
-		<article id="post-0" class="post error404 not-found">
-			<header class="entry-header">
-				<h1 class="entry-title"><?php _e( 'This is somewhat embarrassing, isn&rsquo;t it?', 'twentyeleven' ); ?></h1>
-			</header>
+		<section class="flex-content__page-title">
+			<h1>This is somewhat embarrassing, isn&rsquo;t it?</h1>
+		</section>	
 
-			<div class="entry-content">
+		<section class="default-text section-1">
+
+			<div class="default-text__text">
 				<h3>The page you are trying to reach does not exist, or has been moved.</h3>
 				<h3>Please go to the home page and use the menus to find what you are looking for.</h3>
-			</div><!-- .entry-content -->
-		</article><!-- #post-0 -->
+			</div>
+		</section>
 
-	</div><!-- #primary -->
+	</div>
 
 <?php get_footer('flex-content'); ?>

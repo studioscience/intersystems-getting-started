@@ -29,7 +29,7 @@ $links = get_sub_field('links');
 						<?php if($link['time']) : ?>
 							<div class="completion-time">
 								<div class="icon">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/time.svg" />
+									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/time.svg" alt="time to complete" />
 								</div>
 								<div class="time">
 									<?php echo $link['time']; ?>

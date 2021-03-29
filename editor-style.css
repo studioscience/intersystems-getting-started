@@ -5871,9 +5871,6 @@ ol.nineteen {
 ol.twenty {
   counter-reset: item 19 !important; }
 
-ol ol {
-  counter-reset: revert !important; }
-
 /*--------------------------------------------------------------
 # Partials
 --------------------------------------------------------------*/

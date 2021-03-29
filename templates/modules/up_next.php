@@ -31,7 +31,7 @@ $link = get_sub_field('link');
 				<?php endif; ?>
 				<div class="completion-time">
 					<div class="icon">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/time.svg" />
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/time.svg" alt="time to complete" />
 					</div>
 					<div class="time">
 						<?php echo $time; ?>

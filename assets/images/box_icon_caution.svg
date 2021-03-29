@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="172.5 1202.004 55 55" width="55" height="55">
+  <g id="Canvas_1" stroke-dasharray="none" fill-opacity="1" fill="none" stroke-opacity="1" stroke="none">
+    <g id="Graphic_21">
+      <path d="M 174.5 1255.004 L 200 1204.004 L 225.5 1255.004 Z" stroke="#d77f04" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    </g>
+    <g id="Graphic_47">
+      <title/>
+      <path d="M 199.136 1236.256 L 197.084 1227.184 L 197.084 1219.876 L 202.916 1219.876 L 202.916 1227.184 L 200.864 1236.256 Z M 200 1245.436 C 198.704 1245.436 197.792 1245.16 197.264 1244.608 C 196.736 1244.056 196.472 1243.396 196.472 1242.628 L 196.472 1241.476 C 196.472 1240.732 196.742 1240.084 197.282 1239.532 C 197.822 1238.98 198.728 1238.704 200 1238.704 C 201.272 1238.704 202.178 1238.98 202.718 1239.532 C 203.258 1240.084 203.528 1240.732 203.528 1241.476 L 203.528 1242.628 C 203.528 1243.396 203.264 1244.056 202.736 1244.608 C 202.208 1245.16 201.296 1245.436 200 1245.436 Z" fill="#d77f04"/>
+    </g>
+  </g>
+</svg>

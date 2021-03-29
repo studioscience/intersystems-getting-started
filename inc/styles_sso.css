@@ -1,0 +1,78 @@
+html {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;  
+}
+
+input[type="submit"] {
+    font-weight: 700;
+    background: #01A09C;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.1);
+    font-size: 16px;
+    letter-spacing: -.44px;
+    color: #fff;
+    line-height: 32px;
+    padding: 10px 28px;
+    text-transform: uppercase;
+    transition: all .3s ease-in-out;
+}
+
+form label {
+    font-weight: 400;
+}
+
+.content-outer {
+    box-shadow: unset;
+    -webkit-box-shadow: unset;
+    margin-top: 0;
+}
+
+.main-header {
+    box-shadow: unset;
+    -webkit-box-shadow: unset;
+}
+
+body, div, button, input, textarea, select {
+    font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5em;
+    letter-spacing: -0.2px;
+    color: #000;
+}
+
+.primary-content h1, h1, .primary-content h2, h2 {
+    font-family: Roboto, system-ui, 'Roboto', system-ui, 'Open Sans', sans-serif;
+    color: #000;
+}
+
+.primary-content h1, h1, h2 { font-weight: 800; }
+
+.primary-content h1, h1 {
+    font-size: 52px;
+    line-height: 58px;
+    letter-spacing: -1.56px;
+    margin: 0 0 20px 0;
+}
+.primary-content h2 {
+    font-size: 36px;
+    line-height: 38px;
+    letter-spacing: -1.08px;
+    margin: 0 0 10px 0;
+}
+
+@font-face {
+    font-family: system-ui;
+    font-style: normal;
+    font-weight: 400;
+    src: local(".SFNS-Regular"), local(".SFNSText-Regular"), local(".HelveticaNeueDeskInterface-Regular"), local(".LucidaGrandeUI"), local("Segoe UI"), local("Ubuntu"), local("Roboto-Regular"), local("DroidSans"), local("Tahoma");
+}
+
+@font-face {
+    font-family: system-ui;
+    font-style: bold;
+    font-weight: 700;
+    src: ocal(".SFNS-Bold"), local(".SFNSText-Bold"), local(".HelveticaNeueDeskInterface-Bold"), local(".LucidaGrandeUI"), local("Segoe UI Bold"), local("Ubuntu Bold"), local("Roboto-Bold"), local("DroidSans-Bold"), local("Tahoma Bold");
+}
+
