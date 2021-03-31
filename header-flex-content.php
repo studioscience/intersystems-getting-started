@@ -51,6 +51,9 @@
 
 	wp_title( '|', true, 'right' );
 
+	$ab_testing = get_field('ab_testing_styles');
+	$ab_testing_styles = $ab_testing ? 'ab-styles' : '';
+
 	// Add the blog name.
 	// bloginfo	( 'name' );
 
@@ -108,7 +111,7 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
 <?php endif; ?>
 
 <?php wp_body_open(); ?>
-<div id="page" class="hfeed">
+<div id="page" class="hfeed <?php echo $ab_testing_styles; ?>">
 	<div id="sitesmenu">				
 		<?php
 			wp_nav_menu(
@@ -136,8 +139,14 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
 		<div class="navbar__nav">
 			<?php
 
+				$nav_title = get_field('nav_title', 'options') ? get_field('nav_title', 'options') : 'Getting Started';
+
 				$bottom_cta = get_field('bottom_cta', 'options') ? get_field('bottom_cta', 'options') : '';
 				$bottom_cta_link = get_field('bottom_cta_link', 'options') ? '<a href="' . get_field('bottom_cta_link', 'options')['url'] . '" target="' . get_field('bottom_cta_link', 'options')['target'] . '" class="isc_btn">' . get_field('bottom_cta_link', 'options')['title'] . '</a>' : '';
+
+				if($ab_testing) : 
+					echo '<div class="navbar__nav__title">' . $nav_title . '</div>';
+				endif;
 
 				wp_nav_menu(
 					array(

@@ -4738,7 +4738,7 @@ p.comment-form-comment {
     position: absolute;
     top: 2.2em; }
   /* Use the available space in the smaller comment form */
-  #respond input[type=text] {
+  #respond input[type="text"] {
     width: 95%; }
   #respond .comment-form-author .required,
   #respond .comment-form-email .required {
@@ -5410,19 +5410,19 @@ footer .nav-block ul li a {
 
 /* end banner */
 /* end Raj */
-body, .featured-items .item__text, .featured-boxes .box__text, .p, p, .default-text table,
-.acf_content.page-template-page-flex-content table, .related-links__link__text, .related-resources__resource__text, .p_sm, .quotes-carousel .column__info__text p, .learning-table__text p, .up-next__text, .p_lg, .completion-time .time, .time_text, .quotes-carousel .column__carousel .quote__text, .quote_text, .footer-flex-content .footer-menu li a, .footer-flex-content .footer-text, .footer_text, .footer-flex-content .footer-legal p, .footer_legal, .navbar__nav .menu-title, .navbar__nav .menu-cta__text, .navbar__nav .primary-menu .sub-menu .menu-item {
+.navbar__nav .primary-menu .sub-menu .menu-item, .navbar__nav .menu-cta__text, .navbar__nav .menu-title, .footer-flex-content .footer-legal p, .footer_legal, .footer-flex-content .footer-text, .footer-flex-content .footer-menu li a, .footer_text, .quotes-carousel .column__carousel .quote__text, .quote_text, .completion-time .time, .time_text, .up-next__text, .learning-table__text p, .quotes-carousel .column__info__text p, .p_lg, .related-resources__resource__text, .related-links__link__text, .default-text table,
+.acf_content.page-template-page-flex-content table, .p_sm, .featured-boxes .box__text, .featured-items .item__text, .p, p, body {
   font-family: "Gotham A", "Gotham B";
   font-style: normal;
   font-weight: 400; }
 
-.isc_btn, .isc_link, .top-menu li a, .navbar__nav .primary-menu .menu-item {
+.navbar__nav .primary-menu .menu-item, .top-menu li a, .isc_link, .isc_btn {
   font-family: "Gotham A", "Gotham B";
   font-style: normal;
   font-weight: 700; }
 
-.flex-content__page-title h1, .h_1, .featured-logos__title, .quotes-carousel .column__info__title, .learning-table__title, .related-links__title, .related-resources__title, .up-next__title, .select-language__title, .h_2, .default-text h2.numbered,
-.acf_content.page-template-page-flex-content h2.numbered, .h_3, .up-next__secondary-title, .h_4, .featured-items .item__title, .featured-boxes .box__title, .related-links__link__title, .related-resources__resource__title, .select-language__language__name, .h_5 {
+.select-language__language__name, .related-resources__resource__title, .related-links__link__title, .featured-boxes .box__title, .featured-items .item__title, .h_5, .up-next__secondary-title, .h_4, .default-text h2.numbered,
+.acf_content.page-template-page-flex-content h2.numbered, .h_3, .select-language__title, .up-next__title, .related-resources__title, .related-links__title, .learning-table__title, .quotes-carousel .column__info__title, .featured-logos__title, .h_2, .flex-content__page-title h1, .h_1 {
   font-family: "Gotham A", "Gotham B";
   font-style: normal;
   font-weight: 800; }
@@ -5436,17 +5436,15 @@ body, .featured-items .item__text, .featured-boxes .box__text, .p, p, .default-t
       font-size: 52px;
       letter-spacing: -1.56px;
       line-height: 58px; } }
-
-.featured-logos__title, .quotes-carousel .column__info__title, .learning-table__title, .related-links__title, .related-resources__title, .up-next__title, .select-language__title, .h_2 {
+.select-language__title, .up-next__title, .related-resources__title, .related-links__title, .learning-table__title, .quotes-carousel .column__info__title, .featured-logos__title, .h_2 {
   font-size: 36px;
   letter-spacing: -1.08px;
   line-height: 44px; }
   @media (min-width: 992px) {
-    .featured-logos__title, .quotes-carousel .column__info__title, .learning-table__title, .related-links__title, .related-resources__title, .up-next__title, .select-language__title, .h_2 {
+    .select-language__title, .up-next__title, .related-resources__title, .related-links__title, .learning-table__title, .quotes-carousel .column__info__title, .featured-logos__title, .h_2 {
       font-size: 48px;
       letter-spacing: -1.44px;
       line-height: 58px; } }
-
 .default-text h2.numbered,
 .acf_content.page-template-page-flex-content h2.numbered, .h_3 {
   font-size: 20px;
@@ -5458,7 +5456,6 @@ body, .featured-items .item__text, .featured-boxes .box__text, .p, p, .default-t
       font-size: 36px;
       letter-spacing: -1.08px;
       line-height: 38px; } }
-
 .up-next__secondary-title, .h_4 {
   font-size: 20px;
   letter-spacing: -0.2px;
@@ -5468,62 +5465,57 @@ body, .featured-items .item__text, .featured-boxes .box__text, .p, p, .default-t
       font-size: 26px;
       letter-spacing: -0.29px;
       line-height: 28px; } }
-
-.featured-items .item__title, .featured-boxes .box__title, .related-links__link__title, .related-resources__resource__title, .select-language__language__name, .h_5 {
+.select-language__language__name, .related-resources__resource__title, .related-links__link__title, .featured-boxes .box__title, .featured-items .item__title, .h_5 {
   font-size: 18px;
   letter-spacing: -0.18px;
   line-height: 26px; }
   @media (min-width: 992px) {
-    .featured-items .item__title, .featured-boxes .box__title, .related-links__link__title, .related-resources__resource__title, .select-language__language__name, .h_5 {
+    .select-language__language__name, .related-resources__resource__title, .related-links__link__title, .featured-boxes .box__title, .featured-items .item__title, .h_5 {
       font-size: 20px;
       letter-spacing: -0.2px;
       line-height: 26px; } }
-
-.featured-items .item__text, .featured-boxes .box__text, .p, p {
+.featured-boxes .box__text, .featured-items .item__text, .p, p {
   font-size: 16px;
   letter-spacing: -0.2px;
   line-height: 26px; }
   @media (min-width: 992px) {
-    .featured-items .item__text, .featured-boxes .box__text, .p, p {
+    .featured-boxes .box__text, .featured-items .item__text, .p, p {
       line-height: 24px; } }
-
-.default-text table,
-.acf_content.page-template-page-flex-content table, .related-links__link__text, .related-resources__resource__text, .p_sm {
+.related-resources__resource__text, .related-links__link__text, .default-text table,
+.acf_content.page-template-page-flex-content table, .p_sm {
   font-size: 14px;
   letter-spacing: -0.17px;
   line-height: 22px; }
 
-.quotes-carousel .column__info__text p, .learning-table__text p, .up-next__text, .p_lg {
+.up-next__text, .learning-table__text p, .quotes-carousel .column__info__text p, .p_lg {
   font-size: 16px;
   letter-spacing: -0.18px;
   line-height: 26px; }
   @media (min-width: 992px) {
-    .quotes-carousel .column__info__text p, .learning-table__text p, .up-next__text, .p_lg {
+    .up-next__text, .learning-table__text p, .quotes-carousel .column__info__text p, .p_lg {
       font-size: 18px;
       letter-spacing: -0.2px;
       line-height: 30px; } }
-
 .completion-time .time, .time_text {
   font-size: 16px;
   color: #5E6977;
   letter-spacing: -0.18px; }
 
-.flex-content__sidebar__title, .flex-content__sidebar__title-mobile, .flex-content__sidebar__links, .sidebar_links {
+.flex-content__sidebar__links, .flex-content__sidebar__title, .flex-content__sidebar__title-mobile, .sidebar_links {
   font-size: 18px;
   letter-spacing: -0.18px;
   line-height: 26px; }
   @media (min-width: 768px) {
-    .flex-content__sidebar__title, .flex-content__sidebar__title-mobile, .flex-content__sidebar__links, .sidebar_links {
+    .flex-content__sidebar__links, .flex-content__sidebar__title, .flex-content__sidebar__title-mobile, .sidebar_links {
       font-size: 14px;
       letter-spacing: -0.17px;
       line-height: 22px; } }
-
 .quotes-carousel .column__carousel .quote__text, .quote_text {
   font-size: 25px;
   letter-spacing: -0.75px;
   line-height: 42px; }
 
-.footer-flex-content .footer-menu li a, .footer-flex-content .footer-text, .footer_text {
+.footer-flex-content .footer-text, .footer-flex-content .footer-menu li a, .footer_text {
   font-size: 12px;
   letter-spacing: 0; }
 
@@ -5551,6 +5543,24 @@ body, .featured-items .item__text, .featured-boxes .box__text, .p, p, .default-t
     margin: 0 10px 0 0;
     height: 24px;
     width: 24px; }
+  .isc_btn.lg-cta {
+    font-size: 20px;
+    line-height: 36px;
+    padding-right: 58px; }
+    .isc_btn.lg-cta:after {
+      position: absolute;
+      display: block;
+      content: '';
+      top: 19px;
+      right: 30px;
+      transition: all 300ms ease-in-out;
+      background-image: url("./assets/images/link-arrow-white.svg");
+      background-repeat: no-repeat;
+      background-size: 18px 18px;
+      width: 18px;
+      height: 18px; }
+    .isc_btn.lg-cta:hover:after, .isc_btn.lg-cta:focus:after {
+      right: 20px; }
   .isc_btn:visited, .isc_btn:active, .isc_btn:link {
     color: #fff; }
   .isc_btn:hover, .isc_btn:focus {
@@ -5732,7 +5742,6 @@ a:visited {
   @media (min-width: 992px) {
     .content-divider {
       margin: 60px 0; } }
-
 .anchor-tag {
   margin-top: -80px;
   padding-top: 80px;
@@ -5744,7 +5753,6 @@ a:visited {
     .anchor-tag {
       margin-top: -143px;
       padding-top: 143px; } }
-
 .completion-time {
   display: flex;
   align-items: center; }
@@ -5790,7 +5798,6 @@ a:visited {
       @media (min-width: 768px) {
         #cookie-notice .cookie-notice-container .cn-buttons-container {
           flex-basis: 20%; } }
-
 .isc_infobox {
   border: 5px solid #2F2A96;
   padding: 25px;
@@ -5871,6 +5878,9 @@ ol.nineteen {
 ol.twenty {
   counter-reset: item 19 !important; }
 
+ol ol {
+  counter-reset: revert !important; }
+
 /*--------------------------------------------------------------
 # Partials
 --------------------------------------------------------------*/
@@ -5897,7 +5907,6 @@ ol.twenty {
   @media (min-width: 992px) {
     #sitesmenu {
       position: fixed; } }
-
 .top-menu {
   padding: 0 17px;
   font-size: 12px;
@@ -5946,7 +5955,6 @@ ol.twenty {
       @media (min-width: 500px) {
         .top-menu li:last-child {
           padding-right: 8px; } }
-
 /* primary navigation */
 .navbar {
   position: relative;
@@ -6421,7 +6429,6 @@ ol.twenty {
               color: #00B2AA; }
               .flex-content__sidebar__links li.active a:hover, .flex-content__sidebar__links li.active a:focus {
                 opacity: 0.75; } }
-
 /*--------------------------------------------------------------
 # Modules
 --------------------------------------------------------------*/
@@ -6506,7 +6513,6 @@ ol.twenty {
       .acf_content.page-template-page-flex-content h2.numbered:after {
         top: -131px;
         margin: 60px 0; } }
-
 .default-text code,
 .acf_content.page-template-page-flex-content code {
   color: #2F2A96;
@@ -6656,7 +6662,6 @@ ol.twenty {
       @media only screen and (min-width: 992px) {
         .featured-logos__logos .logo img {
           max-width: 100%; } }
-
 .quotes-carousel {
   display: block;
   position: relative; }

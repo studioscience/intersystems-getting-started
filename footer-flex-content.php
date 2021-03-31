@@ -3,6 +3,7 @@
  * Template for displaying the footer for Flexible Content
  */
 
+$ab_testing_styles = get_field('ab_testing_styles');
 $legal_copy = get_field('legal_copy', 'options');
 
 ?>
@@ -27,7 +28,7 @@ $legal_copy = get_field('legal_copy', 'options');
 				?>
 			</div>
 			<div class="col-xs-12 col-sm-7">
-				<?php if(is_front_page()) : ?>
+				<?php if(is_front_page() || $ab_testing_styles) : ?>
 					<div class="footer-legal">
 						<?php if($legal_copy) :
 							echo $legal_copy;

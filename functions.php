@@ -1012,6 +1012,17 @@ function disable_wp_auto_p( $content ) {
   }
   add_filter( 'the_content', 'disable_wp_auto_p', 0 );
 
+ /**
+ * Enqueue Styles - Load Front End CSS
+ */
+function isc_enqueue_front_end_styles() {
+
+	$version = THEME_VERSION;
+   	wp_enqueue_style( $handle . '-new-module-styles', get_template_directory_uri() . '/new-module-styles.css', array(), $version );
+
+}
+add_action( 'wp_enqueue_scripts', 'isc_enqueue_front_end_styles' );
+
 /**
  * Enqueue Scripts - Load Front End JS
  */

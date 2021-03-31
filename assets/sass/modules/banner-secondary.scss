@@ -1,0 +1,53 @@
+.banner-secondary {
+	background-color: $isc_offwhite;
+	position: relative;
+	padding: 60px 0;
+	color: $white;
+	&:before {
+		content: '';
+		position: absolute;
+		background-color: inherit;
+		width: 100vw;
+		height: 100%;
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	.h_2 {
+		color: $white;
+		margin-top: 0;
+	}
+	&__background {
+		position: relative;
+		content: '';
+		display: block;
+		background-size: cover;
+		background-position: 0% center;
+		background-repeat: no-repeat;
+		position: absolute;
+		height: 100%;
+		width: calc(100vw - 8px);
+		top: 0;
+		left: -21px;
+		@media (min-width: 970px) {
+			left: calc(((-1 * (100vw - 920px) / 2)) + 4px);
+		}
+		@media (min-width: 992px) {
+			width: calc(100vw - 308px);
+			left: -46px;;
+		}
+		@media (min-width: 1200px) {
+			left: -96px;;
+		}
+		@media (min-width: 1420px) {
+			width: calc(100vw - 448px);
+			left: calc(((-1 * (100vw - 920px) / 2)) + 224px);
+		}
+	}
+	&__text {
+		position: relative;
+		.isc_btn {
+			margin-top: 10px;
+		}
+	}
+}
