@@ -57,7 +57,7 @@
 		}
 
 		if($custom_desktop_styles) {
-			echo '@media only screen and (min-width: 768px) { .' . $section_id . '{';
+			echo '@media only screen and (min-width: 992px) { .' . $section_id . '{';
 		}
 
 			if($custom_padding_top != NULL) {

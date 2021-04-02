@@ -46,7 +46,7 @@ if ( ! isset( $content_width ) ) {
 }
 
 define( 'THEME_NAME', 'ISC Theme' );
-define( 'THEME_VERSION', '1.1.1' );
+define( 'THEME_VERSION', '1.1.3' );
 
 /*
  * Tell WordPress to run twentyeleven_setup() when the 'after_setup_theme' hook is run.

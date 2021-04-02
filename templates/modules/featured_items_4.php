@@ -19,7 +19,7 @@ $items = get_sub_field('items-4');
 	<?php if($items) : ?>
 		<div class="row">
 			<?php foreach($items as $item) : ?>
-				<div class="col-xs-12 col-sm-3">
+				<div class="col-12 col-xs-6 col-sm-3">
 					<div class="item">
 						<?php if($item['image']) : 
 							$img = isc_get_attachment($item['image']);

@@ -219,3 +219,86 @@
   .ab-styles .featured-items .row,
   .ab-styles .footer-flex-content .row {
     position: relative; }
+
+.navbar__logo {
+  position: relative;
+  z-index: 2; }
+
+.navbar__cta {
+  width: 100vw;
+  height: 66px;
+  left: 0;
+  top: 0;
+  position: absolute;
+  background-color: #EFF0F1;
+  z-index: 1;
+  display: none; }
+  @media (min-width: 768px) {
+    .navbar__cta {
+      display: -webkit-flex;
+      display: flex; } }
+  @media (min-width: 992px) {
+    .navbar__cta {
+      height: 97px; } }
+  .navbar__cta .isc_btn {
+    margin: 10px 20px 10px auto;
+    padding: 5px 16px; }
+    @media (min-width: 992px) {
+      .navbar__cta .isc_btn {
+        padding: 10px 28px;
+        margin: 20px 50px 20px auto; } }
+.navbar .menu-toggle {
+  z-index: 2; }
+
+@media (min-width: 992px) {
+  .flex-content {
+    padding-top: 197px; } }
+
+@media (min-width: 768px) {
+  .flex-content.has-flexible-sidebar .flex-content__breadcrumbs + .flex-content__page-title + .flex-content__sidebar {
+    transition: -webkit-transform 300ms ease-in-out;
+    transition: transform 300ms ease-in-out;
+    transition: transform 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
+    top: 55px; }
+    .flex-content.has-flexible-sidebar .flex-content__breadcrumbs + .flex-content__page-title + .flex-content__sidebar.sticky {
+      top: 65px !important; } }
+
+@media (min-width: 992px) {
+  .flex-content.has-flexible-sidebar {
+    padding-right: calc(300px + 1vw); }
+    .flex-content.has-flexible-sidebar .flex-content__breadcrumbs + .flex-content__page-title + .flex-content__sidebar {
+      top: 200px; }
+      .flex-content.has-flexible-sidebar .flex-content__breadcrumbs + .flex-content__page-title + .flex-content__sidebar.sticky {
+        top: 97px !important;
+        -webkit-transform: translateY(40px);
+                transform: translateY(40px); } }
+
+.navbar__logo {
+  position: relative;
+  z-index: 2; }
+
+.navbar__cta {
+  width: 100vw;
+  height: 66px;
+  left: 0;
+  top: 0;
+  position: absolute;
+  background-color: #EFF0F1;
+  z-index: 1;
+  display: none; }
+  @media (min-width: 768px) {
+    .navbar__cta {
+      display: -webkit-flex;
+      display: flex; } }
+  @media (min-width: 992px) {
+    .navbar__cta {
+      height: 97px; } }
+  .navbar__cta .isc_btn {
+    margin: 10px 20px 10px auto;
+    padding: 5px 16px; }
+    @media (min-width: 992px) {
+      .navbar__cta .isc_btn {
+        padding: 10px 28px;
+        margin: 20px 50px 20px auto; } }
+.navbar .menu-toggle {
+  z-index: 2; }
