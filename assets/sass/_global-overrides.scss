@@ -58,4 +58,33 @@
 	.menu-toggle {
 		z-index: 2;
 	}
+	&__nav {
+		&__title {
+			font-family: "Gotham A", "Gotham B";
+			font-weight: 700;
+			font-size: 20px;
+			padding: 15px 25px;
+			margin-bottom: 8px;
+			@media (min-width: 992px) {
+				padding: 12px 50px;
+			}
+		}
+		.primary-menu {
+			.menu-item  {
+				font-weight: 300;
+				&.menu-item-has-children .plus {
+					.horizontal {
+						width: 12px;
+						height: 2px;
+						margin-left: -6px;
+					}
+					.vertical {
+						width: 2px;
+						height: 12px;
+						margin-top: -6px;
+					}	
+				}
+			}
+		}
+	}
 }

@@ -154,10 +154,9 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
 				$bottom_cta = get_field('bottom_cta', 'options') ? get_field('bottom_cta', 'options') : '';
 				$bottom_cta_link = get_field('bottom_cta_link', 'options') ? '<a href="' . get_field('bottom_cta_link', 'options')['url'] . '" target="' . get_field('bottom_cta_link', 'options')['target'] . '" class="isc_btn">' . get_field('bottom_cta_link', 'options')['title'] . '</a>' : '';
 
-				if($ab_testing) : 
-					echo '<div class="navbar__nav__title">Getting Started</div>';
-				endif;
-
+				 
+				echo '<div class="navbar__nav__title">Getting Started</div>';
+				
 				wp_nav_menu(
 					array(
 						'theme_location' => 'primary',
