@@ -1245,6 +1245,7 @@ if( function_exists('acf_add_options_page') ) {
  * Drift Chatbot Implementation
  * Puts the Drift JavaScript in the page header.
  */
+/*****
 add_action('wp_head', 'install_drift');
 function install_drift() {
 ?>
@@ -1253,6 +1254,7 @@ function install_drift() {
 <!-- End of Async Drift Code --> 
 <?php 
 };
+/*****
 /** End Drift Chatbot Implementation **/
 
 
