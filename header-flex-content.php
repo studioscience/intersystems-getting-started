@@ -53,7 +53,6 @@
 
 	$ab_testing = get_field('ab_testing_styles');
 	$ab_testing_styles = $ab_testing ? 'ab-styles' : '';
-	$disable_nav_cta = get_field('disable_nav_cta');
 
 	// Add the blog name.
 	// bloginfo	( 'name' );
@@ -136,17 +135,6 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
 		<a href="/" class="navbar__logo" rel="home">
 			<img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg" alt="InterSystems: Creative data technology" />
 		</a>
-
-		<?php if(!$disable_nav_cta) : 
-			$nav_cta = get_field('nav_cta', 'options');
-			$nav_cta_classes = get_field('nav_cta_classes', 'options') ? get_field('nav_cta_classes', 'options') : '';
-			?> 
-			<?php if($nav_cta) : ?>
-				<div class="navbar__cta">
-					<a href="<?php echo $nav_cta['url']; ?>" class="isc_btn <?php echo $nav_cta_classes; ?>" target="<?php echo $nav_cta['target']; ?>"><?php echo $nav_cta['title']; ?></a>
-				</div>
-			<?php endif; ?>
-		<?php endif; ?>
 		
 		<div class="navbar__nav">
 			<?php
