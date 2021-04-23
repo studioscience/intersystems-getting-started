@@ -736,9 +736,9 @@
       "ec" : 1,
       "ft" : 4,
       "ma" : 0,
-      "oA" : 0,
+      "oA" : 1,
       "oAP" : "\/new-module-styles.css",
-      "oF" : 2,
+      "oF" : 3,
       "oS" : 0,
       "pg" : 0,
       "sct" : 1
@@ -1636,18 +1636,6 @@
       "oA" : 0,
       "oAP" : "\/menutest.html",
       "oF" : 0
-    },
-    "\/new-module-styles.css" : {
-      "aP" : 1,
-      "bl" : 0,
-      "ci" : 0,
-      "co" : 0,
-      "ft" : 16,
-      "ma" : 0,
-      "oA" : 0,
-      "oAP" : "\/new-module-styles-min.css",
-      "oF" : 0,
-      "pg" : 0
     },
     "\/page-flex-content.php" : {
       "cB" : 0,
