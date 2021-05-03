@@ -5203,7 +5203,7 @@ ol.twenty {
             z-index: -1; }
         @media (min-width: 992px) {
           .navbar__nav .primary-menu .menu-item {
-            font-size: 16px;
+            font-size: 14px;
             letter-spacing: -0.2px;
             line-height: 22px; }
             .navbar__nav .primary-menu .menu-item a {
@@ -6371,7 +6371,8 @@ div.enlighter-default {
 .isc_btn.lg-cta {
   font-size: 20px;
   line-height: 36px;
-  padding-right: 58px; }
+  padding-right: 58px;
+  background-color: #c64f00; }
   .isc_btn.lg-cta:after {
     position: absolute;
     display: block;
