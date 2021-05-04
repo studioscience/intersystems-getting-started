@@ -5302,7 +5302,6 @@ ol.twenty {
           padding-bottom: 0; }
         @media (min-width: 992px) {
           .navbar__nav .primary-menu .sub-menu .menu-item {
-            font-size: 16px;
             letter-spacing: -0.2px;
             line-height: 22px; }
             .navbar__nav .primary-menu .sub-menu .menu-item a {
