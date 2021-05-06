@@ -79,14 +79,14 @@ Add this to the "Exclude scripts from Autoptimize" under Settings->Autoptimize->
 
 ### After copy
 
-- Change WordPress address and site address (in General -> Settings or from phpmyadmin in `wp_options` table)
+- Check WordPress address and site address (in General -> Settings or from phpmyadmin in `wp_options` table -- WPEngine should fix this automatically)
 <!-- - Change SSO URLs (now handled in functions.php by changing URL based on site) -->
 - Update Daggerhart OpenID settings
   - login in as iscdeveloper (Wordpress user -- not SSO)
   - enable Daggerhart OpenID plugin
-  - change the plugin settings (client id, secret, URL endpoints, ...) to those for production
+  - change the plugin settings (client id, secret, URL endpoints, ...) to those for production (Raj Singh has these settings stored securely)
 - Allow search engine indexing
-- Remove debug flag from wp-config.php
+- Check to make sure debug flag is set to FALSE in wp-config.php 
 - Check time zone
 
 ## Description
