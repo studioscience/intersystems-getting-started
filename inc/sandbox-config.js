@@ -22,6 +22,12 @@ function sandbox_config_save(config_info) {
     })
 }
 
+/**
+ * Uses the "Containers Status" API to wait for the containers to be built
+ * https://usconfluence.iscinternal.com/pages/viewpage.action?pageId=352778629
+ * @param {String} pollurl 
+ * @param {String} token authorization token
+ */
 function sandbox_build_progress(pollurl, token) {
     jQuery(document).ready(function($){
         $.ajax({
@@ -33,15 +39,18 @@ function sandbox_build_progress(pollurl, token) {
             },
             success: function(response, status, xhr) {
                 resp = response['state']
+                resp = resp.toUpperCase()
                 console.log("Polling response: " + resp)
-                if ( resp == "BUILDING" ) {
+                if ( resp === "ACTION" || resp === "NEW" || resp == "BUILDING" ) {
                     setTimeout(sandbox_build_progress, 2000, pollurl, token)
-                } else if ( resp == "SUCCESS" ) {
+                } else if ( resp === "SUCCESS" ) {
                     console.log("Polling done, saving config info")
                     console.log(JSON.stringify(response.data, undefined, 4))
                     sandbox_config_save(response.data)
                 } else {
-                    console.log("ERROR IN POLLING...")
+                    console.log("ERROR IN POLLING: ")
+                    console.log("state: " + resp)
+                    console.log("status: " + status)
                 }
             },
             error: function(jqXhr, textStatus, errorMessage) {
@@ -62,7 +71,7 @@ function launcheval(sandbox_meta_url, token) {
         $.ajax({
             url: sandbox_meta_url, 
             data: {}, 
-            type: 'GET', 
+            type: 'POST', 
             headers: {
                 "Authorization": token, 
             },
