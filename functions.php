@@ -1407,46 +1407,15 @@ function show_eval_creds($atts = [], $content = null) {
 				<img src="<?php echo get_template_directory_uri()?>/assets/images/icon-tip.png" class="ls-is-cached lazyloaded" alt="tip"></i>
 			</div>
 			<div class="isc_infobox--content">
-				<p class="h_4" style="margin:0">InterSystems Sandbox Settings</p>
-				<style>
-					table .minor_setting {  font-style: italic; }
-				</style>
-				<table id="sandbox_user_settings">
-						<tbody>
-							<tr>
-								<td><strong><a href="<?php echo $all_meta_for_user['sandbox_ide_url']?>" target="_blank">Sandbox IDE</a></strong</td>
-								<td>&nbsp;</td>
-							</tr>
-							<tr>
-								<td><strong><a href="<?php echo $all_meta_for_user['sandbox_smp']?>" target="_blank">Management Portal</a></strong></td>
-								<td>(username: <strong><?php echo $all_meta_for_user['sandbox_username']?></strong>, password: <strong><?php echo $all_meta_for_user['sandbox_password']?></strong>)</td>
-							</tr>
-							<tr>
-								<td><strong>External IDE IP</strong></td>
-								<td><?php echo $all_meta_for_user['sandbox_ext_ide_ip']?>:<?php echo $all_meta_for_user['sandbox_ext_ide_port']?></td>
-							</tr>
-							<tr>
-								<td class="minor_setting">Web dev port</td>
-								<td><?php echo $all_meta_for_user['sandbox_webdev_port']?></td>
-							</tr>
-							<tr>
-								<td><strong>InterSystems IRIS Host</strong></td>
-								<td><?php echo $all_meta_for_user['sandbox_isc_ip']?></td>
-							</tr>
-							<tr>
-								<td class="minor_setting">IDE port</td>
-								<td><?php echo $all_meta_for_user['sandbox_isc_port']?></td>
-							</tr>
-							<tr>
-								<td class="minor_setting">Application port</td>
-								<td><?php echo $all_meta_for_user['sandbox_gateway_port']?></td>
-							</tr>
-							<tr>
-								<td><strong>Expiration</strong></td>
-								<td><?php echo $all_meta_for_user['sandbox_expires']?></td>
-							</tr>
-						</tbody>
-					</table>
+				<p class="h_5" style="margin:0">InterSystems Sandbox provisioned.</p>
+				<p>You may now continue the exercise. You'll be prompted when you need to use the sandbox, but you can also launch the tools from here.
+				<div style="text-align:center;margin-top:24px;">
+					<a style="width:240px;" class="isc_btn" href="<?php echo $all_meta_for_user['sandbox_ide_url']?>" target="_blank">Sandbox IDE</a>
+					<a style="width:240px;" class="isc_btn" href="<?php echo $all_meta_for_user['sandbox_smp']?>" target="_blank">Management Portal</a>
+				</div>
+				<div style="text-align:center;margin-top:24px;">
+					<a style="width:320px;" id="isc-reset-sandbox-btn" href="#" onclick="sandbox_reset()">Delete Sandbox</a>
+				</div>
 			</div>
 		</div>
 		
@@ -1501,7 +1470,7 @@ function sandbox_config_callback() {
 
 	$user_id = get_current_user_id();
 	$PD = $_POST['project_details'];
-	$sandbox_ide_url = sanitize_text_field( $PD['IDE']);
+	$sandbox_ide_url = sanitize_text_field( $PD['ide']);
 	update_user_meta( $user_id, 'sandbox_ide_url', $sandbox_ide_url);
 	$sandbox_username = sanitize_text_field( $PD['username']);
 	update_user_meta( $user_id, 'sandbox_username', $sandbox_username);
@@ -1530,10 +1499,48 @@ function sandbox_config_callback() {
 
 	header('HTTP/1.1 200');
 	echo 'Successful POST: ISC Sandbox config';
-exit;
+	exit;
 }
 add_action('wp_ajax_nopriv_sandbox_config_cb', 'sandbox_config_callback');
 add_action('wp_ajax_sandbox_config_cb', 'sandbox_config_callback');
+
+// deletes the sandbox metadata and sends a delete request to the sandbox API
+function sandbox_reset() {
+	if ( !is_user_logged_in() ) {
+		header('HTTP/1.1 400 User not logged in');
+		echo 'User not logged in.';
+		exit;
+	}
+
+	$user_id = get_current_user_id();
+	$user_info = get_userdata($user_id);
+	$useremail = $user_info->user_email;
+
+	global $isc_globals;
+	$token_url = $isc_globals['sandbox_token_service'] . '/authorize/' . $useremail;
+	$sandbox_token = file_get_contents($token_url);
+	$sandbox_meta_url = $isc_globals['sandbox_token_service'] . '/containers/' . $useremail;
+	$result = file_get_contents($sandbox_meta_url, false, 
+				stream_context_create(array( 'http' => array( 'method' => 'DELETE' ) )) );
+
+	delete_user_meta( $user_id, 'sandbox_ide_url');
+	delete_user_meta( $user_id, 'sandbox_username');
+	delete_user_meta( $user_id, 'sandbox_password');
+	delete_user_meta( $user_id, 'sandbox_smp');
+	delete_user_meta( $user_id, 'sandbox_ext_ide_ip');
+	delete_user_meta( $user_id, 'sandbox_ext_ide_port');
+	delete_user_meta( $user_id, 'sandbox_isc_ip');
+	delete_user_meta( $user_id, 'sandbox_isc_port');
+	delete_user_meta( $user_id, 'sandbox_gateway_port');
+	delete_user_meta( $user_id, 'sandbox_webdev_port');
+	delete_user_meta( $user_id, 'sandbox_expires');
+
+	header('HTTP/1.1 200');
+	echo 'Successful sandbox deletion';
+	exit;
+}
+add_action('wp_ajax_nopriv_sandbox_reset', 'sandbox_reset');
+add_action('wp_ajax_sandbox_reset', 'sandbox_reset');
 /** end InterSystems InterSystems Sandbox Implementation **/
 
 /** 

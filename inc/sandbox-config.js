@@ -1,3 +1,30 @@
+function sandbox_reset() {
+    if ( window.confirm("Delete your sandbox? You will lose any code and data you created.") ) {
+        reset_info = {}
+        reset_info['action'] = 'sandbox_reset'
+        jQuery(document).ready(function($){
+            $.ajax({
+                url: ajax_url, 
+                type: 'POST', 
+                async: true, 
+                data: reset_info, 
+                success: function(results) {
+                    console.log('sandbox_reset: successful!')
+                    location.reload()
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log("sandbox_reset: request failed: ")
+                    if (textStatus==="timeout") {
+                        console.log("Call has timed out")
+                    } else {
+                        console.log("response text: " + errorThrown)
+                    }
+                }
+            })
+        })
+    }
+}
+
 function sandbox_config_save(config_info) {
     config_info['action'] = 'sandbox_config_cb'
     jQuery(document).ready(function($){
@@ -39,11 +66,11 @@ function sandbox_build_progress(pollurl, token) {
             },
             success: function(response, status, xhr) {
                 resp = response['state']
-                resp = resp.toUpperCase()
+                resp = resp.toLowerCase()
                 console.log("Polling response: " + resp)
-                if ( resp === "ACTION" || resp === "NEW" || resp == "BUILDING" ) {
+                if ( resp == "action" || resp == "new" || resp == "building" ) {
                     setTimeout(sandbox_build_progress, 2000, pollurl, token)
-                } else if ( resp === "SUCCESS" ) {
+                } else if ( resp == "success" ) {
                     console.log("Polling done, saving config info")
                     console.log(JSON.stringify(response.data, undefined, 4))
                     sandbox_config_save(response.data)
