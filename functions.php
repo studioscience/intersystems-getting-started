@@ -1039,6 +1039,15 @@ function isc_enqueue_front_end_scripts() {
 	wp_localize_script('sandbox-config', 'ajax_url', $ajax_url);
 	// Finally, enqueue our script
 	wp_enqueue_script('sandbox-config');
+	// Register our script for localization
+	wp_register_script(
+		'heap-scroll-track', 
+		"{$theme_url}/inc/heap-scroll-track.js", array('jquery'), '1.0', true
+	);
+	// Localize our script so we can use `ajax_url`
+	wp_localize_script('heap-scroll-track', 'ajax_url', $ajax_url);
+	// Finally, enqueue our script
+	wp_enqueue_script('heap-scroll-track');
 }
 add_action( 'wp_enqueue_scripts', 'isc_enqueue_front_end_scripts' );
 
@@ -1520,8 +1529,13 @@ function sandbox_reset() {
 	$token_url = $isc_globals['sandbox_token_service'] . '/authorize/' . $useremail;
 	$sandbox_token = file_get_contents($token_url);
 	$sandbox_meta_url = $isc_globals['sandbox_token_service'] . '/containers/' . $useremail;
-	$result = file_get_contents($sandbox_meta_url, false, 
-				stream_context_create(array( 'http' => array( 'method' => 'DELETE' ) )) );
+	$opts = stream_context_create([
+		'http' => [
+			'method' => 'DELETE', 
+			'header' => 'Authorization: Basic ' . $sandbox_token
+		]
+	]);
+	$result = file_get_contents($sandbox_meta_url, false, $opts );
 
 	delete_user_meta( $user_id, 'sandbox_ide_url');
 	delete_user_meta( $user_id, 'sandbox_username');
