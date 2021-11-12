@@ -25,15 +25,15 @@ This will handle logging in or registering the user with InterSystems SSO, launc
 
 #### Full list of sandbox settings available via user metadata
 
-sandbox_ide_url: Cloud IDE (Theia)
-sandbox_smp: Management Portal
-username: user name
-password: password
-sandbox_ext_ide_ip: External IDE IP Address
-sandbox_ext_ide_port: External IDE Port
-sandbox_isc_ip: Server IP Address
-sandbox_isc_port: Server Port
-sandbox_expires: Expiration time for sandbox
+- sandbox_ide_url: Cloud IDE (Theia)
+- sandbox_smp: Management Portal
+- username: user name
+- password: password
+- sandbox_ext_ide_ip: External IDE IP Address
+- sandbox_ext_ide_port: External IDE Port
+- sandbox_isc_ip: Server IP Address
+- sandbox_isc_port: Server Port
+- sandbox_expires: Expiration time for sandbox
 
 #### Use sandbox settings info throughout the page
 
