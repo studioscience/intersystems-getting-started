@@ -1532,7 +1532,7 @@ function sandbox_reset() {
 	$opts = stream_context_create([
 		'http' => [
 			'method' => 'DELETE', 
-			'header' => 'Authorization: Basic ' . $sandbox_token
+			'header' => 'Authorization: ' . $sandbox_token
 		]
 	]);
 	$result = file_get_contents($sandbox_meta_url, false, $opts );
