@@ -90,6 +90,9 @@ function sandbox_build_progress(pollurl, token) {
 }
 
 function launcheval(sandbox_meta_url, token) {
+    if (!token || token.length == 0) 
+        console.log("launcheval: NULL AUTHORIZATION TOKEN!")
+        
     jQuery(document).ready(function($){ 
         $('#isc-launch-eval-btn').hide()
         let waitingcontent = '<video autoplay="true" height="360" width="640" src="/wp-content/themes/isctwentyeleven/assets/images/sandbox_launch.mp4" type="video/mp4">'
