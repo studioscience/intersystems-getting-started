@@ -1256,7 +1256,14 @@ function install_drift() {
 /*****
 /** End Drift Chatbot Implementation **/
 
-
+/**
+ * You can change the capability check for your specific need.
+ * Limiting it to only users who can "manage_options" would
+ * restrict it to only admins in a default WP install.
+ */
+if ( ! current_user_can( 'manage_options' ) ) {
+    add_filter( 'show_admin_bar', '__return_false' );
+}
 /** 
  * InterSystems SSO Implementation
  * Implements OAuth2 login to InterSystems SSO OAuth2 service 
