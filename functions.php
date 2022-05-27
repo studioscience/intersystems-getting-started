@@ -1332,7 +1332,7 @@ function one_hour_from_now() {
 // Show evaluation instance credentials
 function show_eval_creds($atts = [], $content = null) {
 	$values = shortcode_atts( array(
-		'login_box_content' => '<div class="isc_infobox--title">Need InterSystems IRIS?</div><div>Get a free, online development sandbox here. Log in with your InterSystems universal account, or register for one below.</div>',
+		'login_box_content' => '<div class="isc_infobox--title">Need InterSystems IRIS?</div><div>Get a free, online development sandbox here. Log in with your InterSystems login account, or register for one below.</div>',
 		'launch_box_content' => '<div class="isc_infobox--title">Provision your free, online sandbox environment</div><div>Includes InterSystems IRIS and a browser-based IDE.</div>', 
 		'login_after_reg_box_content' => '<div class="isc_infobox--title">Thanks for registering!</div><div>Now login to launch your InterSystems IRIS sandbox</div>'
 	), $atts);
@@ -1451,7 +1451,7 @@ function show_iris_eval_setting($atts = [], $content = "") {
 		'fallback' => ""
 	), $atts);
 	if ( sandbox_expired() ) 
-		return '<em><a href="#getsandbox">-- cannot display value - please provision a sandbox</a></em>';
+		return '<em><a href="#getsandbox">-- provisioned sandbox required</a></em>';
 
 	if ( $values['setting'] == null ) 
 		return 'MISSING SETTING VALUE';
