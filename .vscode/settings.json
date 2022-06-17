@@ -1,0 +1,27 @@
+{
+    "deploy.reloaded": {
+        "packages": [
+            {
+                "name": "gettingstartedisctheme",
+                "version": "0.15.0", 
+                "files": [
+                    "**/*.*"
+                ], 
+                "exclude": [
+                    ".vscode/**"
+                ]
+            }
+        ], 
+        "targets": [
+            {
+                "name": "gettingstarted--dev",
+                "type": "sftp",
+                "host": "iscdevelstage.sftp.wpengine.com", 
+                "port": 2222,
+                "user": "iscdevelstage-admin",
+                "password": "demolish-voltage-carven",
+                "dir": "/wp-content/themes/isctwentyeleven",
+            }
+        ]
+    }
+}

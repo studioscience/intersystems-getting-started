@@ -1039,15 +1039,6 @@ function isc_enqueue_front_end_scripts() {
 	wp_localize_script('sandbox-config', 'ajax_url', $ajax_url);
 	// Finally, enqueue our script
 	wp_enqueue_script('sandbox-config');
-	// Register our script for localization
-	wp_register_script(
-		'heap-scroll-track', 
-		"{$theme_url}/inc/heap-scroll-track.js", array('jquery'), '1.0', true
-	);
-	// Localize our script so we can use `ajax_url`
-	wp_localize_script('heap-scroll-track', 'ajax_url', $ajax_url);
-	// Finally, enqueue our script
-	wp_enqueue_script('heap-scroll-track');
 }
 add_action( 'wp_enqueue_scripts', 'isc_enqueue_front_end_scripts' );
 
@@ -1256,14 +1247,7 @@ function install_drift() {
 /*****
 /** End Drift Chatbot Implementation **/
 
-/**
- * You can change the capability check for your specific need.
- * Limiting it to only users who can "manage_options" would
- * restrict it to only admins in a default WP install.
- */
-if ( ! current_user_can( 'manage_options' ) ) {
-    add_filter( 'show_admin_bar', '__return_false' );
-}
+
 /** 
  * InterSystems SSO Implementation
  * Implements OAuth2 login to InterSystems SSO OAuth2 service 
@@ -1323,16 +1307,10 @@ function three_days_from_now() {
 	return $thentime;
 }
 
-function one_hour_from_now() {
-	$nowtime = current_time( 'timestamp', 0 );
-	$thentime = $nowtime + (60 * 60); // # of seconds in a minute times # of minutes in an hour
-	return $thentime;
-}
-
 // Show evaluation instance credentials
 function show_eval_creds($atts = [], $content = null) {
 	$values = shortcode_atts( array(
-		'login_box_content' => '<div class="isc_infobox--title">Need InterSystems IRIS?</div><div>Get a free, online development sandbox here. Log in with your InterSystems login account, or register for one below.</div>',
+		'login_box_content' => '<div class="isc_infobox--title">Need InterSystems IRIS?</div><div>Get a free, online development sandbox here. Log in with your InterSystems universal account, or register for one below.</div>',
 		'launch_box_content' => '<div class="isc_infobox--title">Provision your free, online sandbox environment</div><div>Includes InterSystems IRIS and a browser-based IDE.</div>', 
 		'login_after_reg_box_content' => '<div class="isc_infobox--title">Thanks for registering!</div><div>Now login to launch your InterSystems IRIS sandbox</div>'
 	), $atts);
@@ -1371,27 +1349,35 @@ function show_eval_creds($atts = [], $content = null) {
 	// If we're here the user is logged in. 
 	$user_info = get_userdata($user_id);
 	$useremail = $user_info->user_email;
+	// Track them in Heap
+	// <script>
+	// heap.identify();
+	// heap.addUserProperties( {"email": ""} );
+	// </script>
 
-	// Now check if they have an active sandbox. 
-	// If so, just show the info. 
-	// If not, do all the things to launch one
-	$output = '';
-	$all_meta_for_user = array_map( function( $a ){ return $a[0]; }, get_user_meta( $user_id ) );
-	if ( sandbox_expired() ) {
-		// Sandbox is either non-existent, or expired
-		// Get a token for creating an evaluation sandbox for the user
-		// Returns 200 and a token that is valid for the provided email address for 10 minutes if email is associated with a fully-registered SSO user.
-		// Otherwise returns 401 w/ error message
-		global $isc_globals;
-		$token_url = $isc_globals['sandbox_token_service'] . '/authorize/' . $useremail;
-		$sandbox_token = file_get_contents($token_url);
-		error_log("token_url: $token_url");
-		$sandbox_meta_url = $isc_globals['sandbox_token_service'] . '/containers/' . $useremail;
-		error_log("sandbox_meta_url: $sandbox_meta_url");
+	// Now check if they have an active sandbox.
+	// API docs: https://usconfluence.iscinternal.com/pages/viewpage.action?pageId=352778629
+	global $isc_globals;
 
-		// Show an explanation of sandbox has expired
-		$expired_messsage = sandbox_exists() ? "<br><em>Please provision your sandbox.</em>" : "";
+	// Use the container launching API above. Hit authorize to get a token.
+	$token_url = $isc_globals['sandbox_token_service'] . '/authorize/' . $useremail;
+	error_log("token_url: $token_url");
+	$sandbox_token = file_get_contents($token_url);
 
+	// Use the auth token to make a containers request. 
+	$opts = array('http' =>
+		array(
+			'method' => "GET",
+			'header' => "Authorization: " . $sandbox_token
+		)
+	);
+	$ctx = stream_context_create($opts);
+	$sandbox_url = $isc_globals['sandbox_token_service'] . '/containers/' . $useremail;
+	$container_response = file_get_contents($sandbox_url, false, $ctx);
+	$container_response = json_decode($container_response);
+
+	// If response's "project_details" value is null, show login
+	if ( !isset($container_response->project_details) ) {
 		ob_start();
 		?>
 		<a name="getsandbox"></a>
@@ -1413,8 +1399,8 @@ function show_eval_creds($atts = [], $content = null) {
 		<?php
 		return ob_get_clean();
 	}
+	// If response's "project_details" value is not null, show settings
 	else {
-		// Sandbox is not expired so just show stored settings
 		ob_start();
 		?>
 		<a name="getsandbox"></a>
@@ -1423,15 +1409,46 @@ function show_eval_creds($atts = [], $content = null) {
 				<img src="<?php echo get_template_directory_uri()?>/assets/images/icon-tip.png" class="ls-is-cached lazyloaded" alt="tip"></i>
 			</div>
 			<div class="isc_infobox--content">
-				<p class="h_5" style="margin:0">InterSystems Sandbox provisioned.</p>
-				<p>You may now continue the exercise. You'll be prompted when you need to use the sandbox, but you can also launch the tools from here.
-				<div style="text-align:center;margin-top:24px;">
-					<a style="width:240px;" class="isc_btn" href="<?php echo $all_meta_for_user['sandbox_ide_url']?>" target="_blank">Sandbox IDE</a>
-					<a style="width:240px;" class="isc_btn" href="<?php echo $all_meta_for_user['sandbox_smp']?>" target="_blank">Management Portal</a>
-				</div>
-				<div style="text-align:center;margin-top:24px;">
-					<a style="width:320px;" id="isc-reset-sandbox-btn" href="#" onclick="sandbox_reset()">Delete Sandbox</a>
-				</div>
+				<p class="h_4" style="margin:0">InterSystems Sandbox Settings</p>
+				<style>
+					table .minor_setting {  font-style: italic; }
+				</style>
+				<table id="sandbox_user_settings">
+						<tbody>
+							<tr>
+								<td><strong><a href="<?php echo $container_response->project_details->ide?>" target="_blank">Sandbox IDE</a></strong</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td><strong><a href="<?php echo $container_response->project_details->MP?>" target="_blank">Management Portal</a></strong></td>
+								<td>(username: <strong><?php echo $container_response->project_details->username?></strong>, password: <strong><?php echo $container_response->project_details->password?></strong>)</td>
+							</tr>
+							<tr>
+								<td><strong>External IDE IP</strong></td>
+								<td><?php echo $container_response->project_details->HostServerAddress?>:<?php echo $container_response->project_details->HostWebPort?></td>
+							</tr>
+							<tr>
+								<td class="minor_setting">Web dev port</td>
+								<td><?php echo $container_response->project_details->TheiaIDE4200Port?></td>
+							</tr>
+							<tr>
+								<td><strong>InterSystems IRIS Host</strong></td>
+								<td><?php echo $container_response->project_details->InterSystemsIP?></td>
+							</tr>
+							<tr>
+								<td class="minor_setting">IDE port</td>
+								<td><?php echo $container_response->project_details->InterSystems51773Port?></td>
+							</tr>
+							<tr>
+								<td class="minor_setting">Application port</td>
+								<td><?php echo $container_response->project_details->InterSystems1972Port?></td>
+							</tr>
+							<tr>
+								<td><strong>Expiration</strong></td>
+								<td><?php echo $container_response->expiration_date?></td>
+							</tr>
+						</tbody>
+					</table>
 			</div>
 		</div>
 		
@@ -1451,7 +1468,7 @@ function show_iris_eval_setting($atts = [], $content = "") {
 		'fallback' => ""
 	), $atts);
 	if ( sandbox_expired() ) 
-		return '<em><a href="#getsandbox">-- provisioned sandbox required</a></em>';
+		return '<em><a href="#getsandbox">-- cannot display value - please provision a sandbox</a></em>';
 
 	if ( $values['setting'] == null ) 
 		return 'MISSING SETTING VALUE';
@@ -1478,6 +1495,7 @@ function show_iris_eval_setting($atts = [], $content = "") {
 add_shortcode('iris_eval_settings', 'show_iris_eval_setting');
 
 function sandbox_config_callback() {
+	error_log("In sandbox_config_callback");
 	if ( !isset($_POST) || empty($_POST) || !is_user_logged_in() ) {
 		header('HTTP/1.1 400 Empty POST Values');
 		echo 'Could Not Verify POST Values.';
@@ -1485,83 +1503,36 @@ function sandbox_config_callback() {
 	}
 
 	$user_id = get_current_user_id();
-	$PD = $_POST['project_details'];
-	$sandbox_ide_url = sanitize_text_field( $PD['ide']);
-	update_user_meta( $user_id, 'sandbox_ide_url', $sandbox_ide_url);
-	$sandbox_username = sanitize_text_field( $PD['username']);
-	update_user_meta( $user_id, 'sandbox_username', $sandbox_username);
-	$sandbox_password = sanitize_text_field( $PD['password']);
-	update_user_meta( $user_id, 'sandbox_password', $sandbox_password);
-	$sandbox_smp = sanitize_text_field( $PD['MP']);
-	update_user_meta( $user_id, 'sandbox_smp', $sandbox_smp);
-	$sandbox_ext_ide_ip = sanitize_text_field( $PD['HostServerAddress']);
-	update_user_meta( $user_id, 'sandbox_ext_ide_ip', $sandbox_ext_ide_ip);
-	$sandbox_ext_ide_port = sanitize_text_field( $PD['HostWebPort']);
-	update_user_meta( $user_id, 'sandbox_ext_ide_port', $sandbox_ext_ide_port);
-	$sandbox_isc_ip = sanitize_text_field( $PD['InterSystemsIP']);
-	update_user_meta( $user_id, 'sandbox_isc_ip', $sandbox_isc_ip);
-	$sandbox_isc_port = sanitize_text_field( $PD['InterSystems51773Port']);
-	update_user_meta( $user_id, 'sandbox_isc_port', $sandbox_isc_port);
-	$sandbox_gateway_port = sanitize_text_field( $PD['InterSystems1972Port']);
-	update_user_meta( $user_id, 'sandbox_gateway_port', $sandbox_gateway_port);
-	$sandbox_webdev_port = sanitize_text_field( $PD['TheiaIDE4200Port']);
-	update_user_meta( $user_id, 'sandbox_webdev_port', $sandbox_webdev_port);
-	// ignore expiration date returned from sandbox API because 
-	// we want to just cache the info for an hour, and get it fresh again 
-	// any time after that
-	// $sandbox_expires = sanitize_text_field( $_POST['expiration_date']);
+	// $sandbox_ide_url = sanitize_text_field( $_POST['IDE']);
+	// update_user_meta( $user_id, 'sandbox_ide_url', $sandbox_ide_url);
+	// $sandbox_username = sanitize_text_field( $_POST['username']);
+	// update_user_meta( $user_id, 'sandbox_username', $sandbox_username);
+	// $sandbox_password = sanitize_text_field( $_POST['password']);
+	// update_user_meta( $user_id, 'sandbox_password', $sandbox_password);
+	// $sandbox_smp = sanitize_text_field( $_POST['MP']);
+	// update_user_meta( $user_id, 'sandbox_smp', $sandbox_smp);
+	// $sandbox_ext_ide_ip = sanitize_text_field( $_POST['HostServerAddress']);
+	// update_user_meta( $user_id, 'sandbox_ext_ide_ip', $sandbox_ext_ide_ip);
+	// $sandbox_ext_ide_port = sanitize_text_field( $_POST['HostWebPort']);
+	// update_user_meta( $user_id, 'sandbox_ext_ide_port', $sandbox_ext_ide_port);
+	// $sandbox_isc_ip = sanitize_text_field( $_POST['InterSystemsIP']);
+	// update_user_meta( $user_id, 'sandbox_isc_ip', $sandbox_isc_ip);
+	// $sandbox_isc_port = sanitize_text_field( $_POST['InterSystems51773Port']);
+	// update_user_meta( $user_id, 'sandbox_isc_port', $sandbox_isc_port);
+	// $sandbox_gateway_port = sanitize_text_field( $_POST['InterSystems1972Port']);
+	// update_user_meta( $user_id, 'sandbox_gateway_port', $sandbox_gateway_port);
+	// $sandbox_webdev_port = sanitize_text_field( $_POST['TheiaIDE4200Port']);
+	// update_user_meta( $user_id, 'sandbox_webdev_port', $sandbox_webdev_port);
+	// $sandbox_expires = sanitize_text_field( $_POST['exp']);
 	// update_user_meta( $user_id, 'sandbox_expires', $sandbox_expires);
-	update_user_meta( $user_id, 'sandbox_expires', date('c', one_hour_from_now()) );
+	// update_user_meta( $user_id, 'sandbox_expires', date('c', three_days_from_now()) );
 
 	header('HTTP/1.1 200');
 	echo 'Successful POST: ISC Sandbox config';
-	exit;
+exit;
 }
 add_action('wp_ajax_nopriv_sandbox_config_cb', 'sandbox_config_callback');
 add_action('wp_ajax_sandbox_config_cb', 'sandbox_config_callback');
-
-// deletes the sandbox metadata and sends a delete request to the sandbox API
-function sandbox_reset() {
-	if ( !is_user_logged_in() ) {
-		header('HTTP/1.1 400 User not logged in');
-		echo 'User not logged in.';
-		exit;
-	}
-
-	$user_id = get_current_user_id();
-	$user_info = get_userdata($user_id);
-	$useremail = $user_info->user_email;
-
-	global $isc_globals;
-	$token_url = $isc_globals['sandbox_token_service'] . '/authorize/' . $useremail;
-	$sandbox_token = file_get_contents($token_url);
-	$sandbox_meta_url = $isc_globals['sandbox_token_service'] . '/containers/' . $useremail;
-	$opts = stream_context_create([
-		'http' => [
-			'method' => 'DELETE', 
-			'header' => 'Authorization: ' . $sandbox_token
-		]
-	]);
-	$result = file_get_contents($sandbox_meta_url, false, $opts );
-
-	delete_user_meta( $user_id, 'sandbox_ide_url');
-	delete_user_meta( $user_id, 'sandbox_username');
-	delete_user_meta( $user_id, 'sandbox_password');
-	delete_user_meta( $user_id, 'sandbox_smp');
-	delete_user_meta( $user_id, 'sandbox_ext_ide_ip');
-	delete_user_meta( $user_id, 'sandbox_ext_ide_port');
-	delete_user_meta( $user_id, 'sandbox_isc_ip');
-	delete_user_meta( $user_id, 'sandbox_isc_port');
-	delete_user_meta( $user_id, 'sandbox_gateway_port');
-	delete_user_meta( $user_id, 'sandbox_webdev_port');
-	delete_user_meta( $user_id, 'sandbox_expires');
-
-	header('HTTP/1.1 200');
-	echo 'Successful sandbox deletion';
-	exit;
-}
-add_action('wp_ajax_nopriv_sandbox_reset', 'sandbox_reset');
-add_action('wp_ajax_sandbox_reset', 'sandbox_reset');
 /** end InterSystems InterSystems Sandbox Implementation **/
 
 /** 
